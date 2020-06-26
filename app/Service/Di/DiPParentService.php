@@ -11,16 +11,14 @@ declare(strict_types=1);
  */
 namespace App\Service\Di;
 
-use App\Service\Dao\UserDao;
+use App\Service\IdService;
 use Hyperf\Di\Annotation\Inject;
 
-class DiParentService extends DiPParentService
+class DiPParentService
 {
-    public $service;
-
     /**
      * @Inject
-     * @var UserDao
+     * @var IdService
      */
-    public $dao;
+    public $parent;
 }

@@ -31,6 +31,7 @@ class DiController extends Controller
         return $this->response->success([
             $this->di->service->id(),
             $this->di->dao->id(),
+            $this->di->parent->id(),
         ]);
     }
 }
