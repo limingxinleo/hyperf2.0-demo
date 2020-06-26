@@ -17,12 +17,14 @@ use HyperfTest\HttpTestCase;
  * @internal
  * @coversNothing
  */
-class DITest extends HttpTestCase
+class ServerTest extends HttpTestCase
 {
-    public function testDiParentInject()
+    public function testServerResponse()
     {
-        $res = $this->get('/di/parentValue');
+        $res = $this->get('/server/response', [
+            'Content-Type' => 'application/json',
+        ]);
+
         $this->assertSame(0, $res['code']);
-        $this->assertSame(2, count($res['data']));
     }
 }
