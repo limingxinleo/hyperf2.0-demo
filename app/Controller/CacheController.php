@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\CacheService;
+use Hyperf\Cache\Annotation\Cacheable;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -24,5 +25,13 @@ class CacheController extends Controller
         return $this->response->success(
             di()->get(CacheService::class)->uuid(1)
         );
+    }
+
+    /**
+     * @Cacheable(prefix="cache:controller")
+     */
+    public function cache()
+    {
+        return $this->response->success(uniqid());
     }
 }
