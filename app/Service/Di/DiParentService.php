@@ -24,6 +24,10 @@ class DiParentService extends DiPParentService
      */
     public $dao;
 
+    public function __construct()
+    {
+    }
+
     public function xxx(): string
     {
         return uniqid();
