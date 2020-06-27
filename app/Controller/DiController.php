@@ -33,6 +33,7 @@ class DiController extends Controller
         $result[] = $this->di->dao->id();
         $result[] = $this->di->parent->id();
         $result[] = $this->di->xxx();
+        $result[] = $this->di->pp->id();
         return $this->response->success($result);
     }
 }

@@ -13,6 +13,7 @@ namespace App\Service\Di;
 
 use App\Service\CacheService;
 use App\Service\Dao\UserDao;
+use App\Service\IdService;
 use Hyperf\Di\Annotation\Inject;
 
 class DiParentService extends DiPParentService
@@ -28,6 +29,12 @@ class DiParentService extends DiPParentService
      * @var UserDao
      */
     public $dao;
+
+    /**
+     * @Inject
+     * @var IdService
+     */
+    public $pp;
 
     public function __construct()
     {

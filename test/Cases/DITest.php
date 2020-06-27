@@ -23,6 +23,6 @@ class DITest extends HttpTestCase
     {
         $res = $this->get('/di/parentValue');
         $this->assertSame(0, $res['code']);
-        $this->assertSame(4, count($res['data']));
+        $this->assertSame(5, count($res['data']));
     }
 }

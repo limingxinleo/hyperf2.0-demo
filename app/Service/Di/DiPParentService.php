@@ -27,5 +27,5 @@ class DiPParentService
      * @Inject
      * @var UserDao
      */
-    public $service;
+    public $pp;
 }
