@@ -28,11 +28,11 @@ class DiController extends Controller
 
     public function parentValue()
     {
-        return $this->response->success([
-            $this->di->service->id(),
-            $this->di->dao->id(),
-            $this->di->parent->id(),
-            $this->di->xxx(),
-        ]);
+        $result = [];
+        $result[] = $this->di->service->id();
+        $result[] = $this->di->dao->id();
+        $result[] = $this->di->parent->id();
+        $result[] = $this->di->xxx();
+        return $this->response->success($result);
     }
 }

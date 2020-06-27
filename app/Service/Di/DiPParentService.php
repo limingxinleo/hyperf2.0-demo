@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Service\Di;
 
+use App\Service\Dao\UserDao;
 use App\Service\IdService;
 use Hyperf\Di\Annotation\Inject;
 
@@ -21,4 +22,10 @@ class DiPParentService
      * @var IdService
      */
     public $parent;
+
+    /**
+     * @Inject
+     * @var UserDao
+     */
+    public $service;
 }

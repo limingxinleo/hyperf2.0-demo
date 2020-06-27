@@ -11,11 +11,16 @@ declare(strict_types=1);
  */
 namespace App\Service\Di;
 
+use App\Service\CacheService;
 use App\Service\Dao\UserDao;
 use Hyperf\Di\Annotation\Inject;
 
 class DiParentService extends DiPParentService
 {
+    /**
+     * @Inject
+     * @var CacheService
+     */
     public $service;
 
     /**
