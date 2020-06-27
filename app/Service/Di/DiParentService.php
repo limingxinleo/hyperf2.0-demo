@@ -23,4 +23,9 @@ class DiParentService extends DiPParentService
      * @var UserDao
      */
     public $dao;
+
+    public function xxx(): string
+    {
+        return uniqid();
+    }
 }

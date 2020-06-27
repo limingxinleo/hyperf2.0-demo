@@ -32,6 +32,7 @@ class DiController extends Controller
             $this->di->service->id(),
             $this->di->dao->id(),
             $this->di->parent->id(),
+            $this->di->xxx(),
         ]);
     }
 }
