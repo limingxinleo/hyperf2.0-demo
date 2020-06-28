@@ -13,8 +13,8 @@ namespace App\Service\Aop;
 
 abstract class ParentService
 {
-    public function getParentString()
+    public function getParentString(string $prefix)
     {
-        return 'parent';
+        return $prefix . 'parent';
     }
 }

@@ -1,15 +1,22 @@
 <?php
 
-
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 namespace App\Service\Aop;
-
 
 class Aop2Service extends ParentService
 {
     use AopTrait;
 
-    public function getAopString()
+    public function getAopString(string $prefix)
     {
-        return 'aop';
+        return $prefix . 'aop';
     }
 }

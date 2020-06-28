@@ -15,8 +15,8 @@ class AopService extends ParentService
 {
     use AopTrait;
 
-    public function getAopString()
+    public function getAopString(string $prefix)
     {
-        return 'aop';
+        return $prefix . 'aop';
     }
 }

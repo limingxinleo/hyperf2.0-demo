@@ -31,9 +31,9 @@ class AopController extends Controller
     public function index()
     {
         $result = [];
-        $result[] = $this->aop->getAopString();
-        $result[] = $this->aop->getParentString();
-        $result[] = $this->aop->getTraitString();
+        $result[] = $this->aop->getAopString('');
+        $result[] = $this->aop->getParentString('');
+        $result[] = $this->aop->getTraitString('');
         return $this->response->success($result);
     }
 
@@ -41,9 +41,9 @@ class AopController extends Controller
     {
         $aop = di()->get(Aop2Service::class);
         $result = [];
-        $result[] = $aop->getAopString();
-        $result[] = $aop->getParentString();
-        $result[] = $aop->getTraitString();
+        $result[] = $aop->getAopString('1');
+        $result[] = $aop->getParentString('1');
+        $result[] = $aop->getTraitString('1');
         return $this->response->success($result);
     }
 }
