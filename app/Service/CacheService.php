@@ -13,7 +13,7 @@ namespace App\Service;
 
 use Hyperf\Cache\Annotation\Cacheable;
 
-class CacheService
+class CacheService extends IdService
 {
     /**
      * @Cacheable(prefix="cache")
