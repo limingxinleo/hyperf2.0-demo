@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Service\Aop\Aop2Service;
 use App\Service\Aop\AopService;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -32,6 +33,17 @@ class AopController extends Controller
         $result = [];
         $result[] = $this->aop->getAopString();
         $result[] = $this->aop->getParentString();
+        $result[] = $this->aop->getTraitString();
+        return $this->response->success($result);
+    }
+
+    public function aop()
+    {
+        $aop = di()->get(Aop2Service::class);
+        $result = [];
+        $result[] = $aop->getAopString();
+        $result[] = $aop->getParentString();
+        $result[] = $aop->getTraitString();
         return $this->response->success($result);
     }
 }

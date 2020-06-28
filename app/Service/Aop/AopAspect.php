@@ -23,6 +23,7 @@ class AopAspect extends AbstractAspect
     public $classes = [
         AopService::class,
         ParentService::class,
+        AopTrait::class,
     ];
 
     public function process(ProceedingJoinPoint $proceedingJoinPoint)

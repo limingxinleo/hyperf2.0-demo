@@ -13,6 +13,8 @@ namespace App\Service\Aop;
 
 class AopService extends ParentService
 {
+    use AopTrait;
+
     public function getAopString()
     {
         return 'aop';

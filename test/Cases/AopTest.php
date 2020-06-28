@@ -26,5 +26,6 @@ class AopTest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertSame('aop_aspect', $res['data'][0]);
         $this->assertSame('parent_aspect', $res['data'][1]);
+        $this->assertSame('trait_aspect', $res['data'][2]);
     }
 }
