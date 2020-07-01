@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Model\Image;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -47,6 +48,16 @@ class ModelController extends Controller
         return $this->response->success([
             'user' => $user->toArray(),
             'image' => $user->image->toArray(),
+        ]);
+    }
+
+    public function morphTo()
+    {
+        $image = Image::query()->find(1);
+
+        return $this->response->success([
+            'imageable' => $image->imageable->toArray(),
+            'image' => $image->toArray(),
         ]);
     }
 }

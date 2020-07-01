@@ -18,6 +18,7 @@ namespace App\Model;
  * @property string $imageable_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \Hyperf\Database\Model\Model $imageable
  */
 class Image extends Model
 {

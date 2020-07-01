@@ -42,4 +42,12 @@ class ModelTest extends HttpTestCase
         $this->assertSame(1, $res['data']['user']['id']);
         $this->assertSame(1, $res['data']['image']['id']);
     }
+
+    public function testModelMorphTo()
+    {
+        $res = $this->get('/model/morphTo');
+        $this->assertSame(0, $res['code']);
+        $this->assertSame(1, $res['data']['imageable']['id']);
+        $this->assertSame(1, $res['data']['image']['id']);
+    }
 }
