@@ -17,6 +17,7 @@ namespace App\Model;
  * @property int $gender
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \App\Model\Book[]|\Hyperf\Database\Model\Collection $books
  */
 class User extends Model
 {
@@ -40,4 +41,9 @@ class User extends Model
      * @var array
      */
     protected $casts = ['id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'user_id', 'id');
+    }
 }

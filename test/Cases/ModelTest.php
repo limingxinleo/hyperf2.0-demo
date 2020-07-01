@@ -19,11 +19,19 @@ use HyperfTest\HttpTestCase;
  */
 class ModelTest extends HttpTestCase
 {
-    public function testModelRelation()
+    public function testModelBelongTo()
     {
         $res = $this->get('/model/belong');
         $this->assertSame(0, $res['code']);
         $this->assertSame(1, $res['data']['user']['id']);
         $this->assertSame(1, $res['data']['book']['id']);
+    }
+
+    public function testModelHasMany()
+    {
+        $res = $this->get('/model/many');
+        $this->assertSame(0, $res['code']);
+        $this->assertSame(1, $res['data']['user']['id']);
+        $this->assertIsArray($res['data']['books']);
     }
 }

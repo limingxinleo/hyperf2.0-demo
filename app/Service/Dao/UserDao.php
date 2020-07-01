@@ -11,10 +11,16 @@ declare(strict_types=1);
  */
 namespace App\Service\Dao;
 
+use App\Model\User;
 use App\Service\Service;
 
 class UserDao extends Service
 {
+    public function first(int $id)
+    {
+        return User::query()->find($id);
+    }
+
     public function id()
     {
         return uniqid();

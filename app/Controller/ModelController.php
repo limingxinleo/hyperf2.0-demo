@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\Dao\BookDao;
+use App\Service\Dao\UserDao;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -26,6 +27,16 @@ class ModelController extends Controller
         return $this->response->success([
             'book' => $book->toArray(),
             'user' => $book->user->toArray(),
+        ]);
+    }
+
+    public function many()
+    {
+        $user = di()->get(UserDao::class)->first(1);
+
+        return $this->response->success([
+            'user' => $user->toArray(),
+            'books' => $user->books->toArray(),
         ]);
     }
 }
