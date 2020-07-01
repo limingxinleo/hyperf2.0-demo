@@ -39,4 +39,14 @@ class ModelController extends Controller
             'books' => $user->books->toArray(),
         ]);
     }
+
+    public function morphOne()
+    {
+        $user = di()->get(UserDao::class)->first(1);
+
+        return $this->response->success([
+            'user' => $user->toArray(),
+            'image' => $user->image->toArray(),
+        ]);
+    }
 }

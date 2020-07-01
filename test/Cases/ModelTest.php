@@ -34,4 +34,12 @@ class ModelTest extends HttpTestCase
         $this->assertSame(1, $res['data']['user']['id']);
         $this->assertIsArray($res['data']['books']);
     }
+
+    public function testModelMorphOne()
+    {
+        $res = $this->get('/model/morphOne');
+        $this->assertSame(0, $res['code']);
+        $this->assertSame(1, $res['data']['user']['id']);
+        $this->assertSame(1, $res['data']['image']['id']);
+    }
 }

@@ -18,6 +18,7 @@ namespace App\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \App\Model\Book[]|\Hyperf\Database\Model\Collection $books
+ * @property \App\Model\Image $image
  */
 class User extends Model
 {
@@ -41,6 +42,11 @@ class User extends Model
      * @var array
      */
     protected $casts = ['id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 
     public function books()
     {
