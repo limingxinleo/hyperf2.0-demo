@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Rpc\JsonRpc;
 
+use App\Service\Dao\UserDao;
 use Hyperf\RpcServer\Annotation\RpcService;
 
 /**
@@ -20,6 +21,7 @@ class IdGenerateService implements IdGenerateInterface
 {
     public function id(string $id): string
     {
-        return (string) $id . uniqid();
+        $user = di()->get(UserDao::class)->first(1);
+        return (string) $id . $user->name . uniqid();
     }
 }

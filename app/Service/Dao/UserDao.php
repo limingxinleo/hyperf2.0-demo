@@ -16,6 +16,9 @@ use App\Service\Service;
 
 class UserDao extends Service
 {
+    /**
+     * @return null|User
+     */
     public function first(int $id)
     {
         return User::query()->find($id);

@@ -32,5 +32,6 @@ class ServerTest extends HttpTestCase
     {
         $res = $this->get('/server/rpc');
         $this->assertSame(0, $res['code']);
+        $this->assertStringContainsString('sssHyperf', $res['data']);
     }
 }
