@@ -14,6 +14,7 @@ use Hyperf\Server\SwooleEvent;
 
 return [
     'mode' => SWOOLE_BASE,
+    // 'type' => \Hyperf\Server\CoroutineServer::class,
     'servers' => [
         [
             'name' => 'http',
@@ -23,6 +24,23 @@ return [
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
                 SwooleEvent::ON_REQUEST => [Hyperf\HttpServer\Server::class, 'onRequest'],
+            ],
+        ],
+        [
+            'name' => 'jsonrpc',
+            'type' => Server::SERVER_BASE,
+            'host' => '0.0.0.0',
+            'port' => 9502,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_RECEIVE => [Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
+            ],
+            'setting' => [
+                'open_length_check' => true,
+                'package_length_type' => 'N',
+                'package_length_offset' => 0,
+                'package_body_offset' => 4,
+                'package_max_length' => 1024 * 1024 * 2,
             ],
         ],
     ],

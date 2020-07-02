@@ -35,12 +35,16 @@
         "hyperf/guzzle": "2.0.x-dev",
         "hyperf/http-message": "2.0.x-dev",
         "hyperf/http-server": "2.0.x-dev",
+        "hyperf/json-rpc": "2.0.x-dev",
         "hyperf/logger": "2.0.x-dev",
         "hyperf/model-cache": "2.0.x-dev",
         "hyperf/pool": "2.0.x-dev",
         "hyperf/process": "2.0.x-dev",
         "hyperf/redis": "2.0.x-dev",
+        "hyperf/rpc-client": "2.0.x-dev",
+        "hyperf/rpc-server": "2.0.x-dev",
         "hyperf/server": "2.0.x-dev",
+        "hyperf/service-governance": "2.0.x-dev",
         "hyperf/utils": "2.0.x-dev"
     },
     "require-dev": {

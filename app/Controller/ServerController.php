@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Rpc\JsonRpc\IdGenerateInterface;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -18,8 +20,21 @@ use Hyperf\HttpServer\Annotation\AutoController;
  */
 class ServerController extends Controller
 {
+    /**
+     * @Inject
+     * @var IdGenerateInterface
+     */
+    protected $idGenerator;
+
     public function response()
     {
         return $this->response->success();
+    }
+
+    public function rpc()
+    {
+        $result = $this->idGenerator->id('sss');
+
+        return $this->response->success($result);
     }
 }
