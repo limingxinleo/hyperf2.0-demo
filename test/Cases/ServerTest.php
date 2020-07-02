@@ -27,4 +27,10 @@ class ServerTest extends HttpTestCase
 
         $this->assertSame(0, $res['code']);
     }
+
+    public function testRpc()
+    {
+        $res = $this->get('/server/rpc');
+        $this->assertSame(0, $res['code']);
+    }
 }

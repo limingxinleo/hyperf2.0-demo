@@ -35,7 +35,7 @@ return [
             'callbacks' => [
                 SwooleEvent::ON_RECEIVE => [Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
             ],
-            'setting' => [
+            'settings' => [
                 'open_length_check' => true,
                 'package_length_type' => 'N',
                 'package_length_offset' => 0,
