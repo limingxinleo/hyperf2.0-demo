@@ -11,6 +11,9 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use Hyperf\HttpMessage\Uri\Uri;
+use Hyperf\Utils\Codec\Json;
+use Hyperf\WebSocketClient\Client;
 use HyperfTest\HttpTestCase;
 
 /**
@@ -33,5 +36,17 @@ class ServerTest extends HttpTestCase
         $res = $this->get('/server/rpc');
         $this->assertSame(0, $res['code']);
         $this->assertStringContainsString('sssHyperf', $res['data']);
+    }
+
+    public function testWebSocket()
+    {
+        $client = new Client(new Uri('ws://127.0.0.1:9503'));
+        $ret = $client->push($uniqid = uniqid());
+        $this->assertTrue($ret);
+
+        $data = $client->recv(1);
+        $data = Json::decode($data->data);
+        $this->assertGreaterThan(0, $data['fd']);
+        $this->assertSame($uniqid, $data['data']);
     }
 }

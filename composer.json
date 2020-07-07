@@ -45,7 +45,9 @@
         "hyperf/rpc-server": "2.0.x-dev",
         "hyperf/server": "2.0.x-dev",
         "hyperf/service-governance": "2.0.x-dev",
-        "hyperf/utils": "2.0.x-dev"
+        "hyperf/utils": "2.0.x-dev",
+        "hyperf/websocket-client": "2.0.x-dev",
+        "hyperf/websocket-server": "2.0.x-dev"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
