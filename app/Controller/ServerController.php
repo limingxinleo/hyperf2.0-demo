@@ -51,7 +51,7 @@ class ServerController extends Controller
 
         go(function () use ($fd) {
             sleep(1);
-            $this->sender->close($fd);
+            $this->sender->disconnect($fd);
         });
 
         return $this->response->success();

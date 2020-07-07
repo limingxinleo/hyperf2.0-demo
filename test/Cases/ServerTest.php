@@ -55,15 +55,16 @@ class ServerTest extends HttpTestCase
         ]);
 
         $data = $client->recv(1);
+        $this->assertSame(1, $data->opcode);
+        $this->assertTrue($data->finish);
         $this->assertSame($id, $data->data);
 
         $this->json('/server/close', [
             'fd' => $fd,
         ]);
 
-        $time = microtime(true);
-        $data = $client->recv(3);
-        $this->assertFalse($data);
-        $this->assertLessThan(3, microtime(true) - $time);
+        $data = $client->recv(10);
+        $this->assertSame(8, $data->opcode);
+        $this->assertTrue($data->finish);
     }
 }
