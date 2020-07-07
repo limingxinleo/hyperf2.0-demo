@@ -14,6 +14,7 @@ namespace App\Controller;
 use App\Rpc\JsonRpc\IdGenerateInterface;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\WebSocketServer\Sender;
 
 /**
  * @AutoController
@@ -26,6 +27,12 @@ class ServerController extends Controller
      */
     protected $idGenerator;
 
+    /**
+     * @Inject
+     * @var Sender
+     */
+    protected $sender;
+
     public function response()
     {
         return $this->response->success();
@@ -36,5 +43,27 @@ class ServerController extends Controller
         $result = $this->idGenerator->id('sss');
 
         return $this->response->success($result);
+    }
+
+    public function close()
+    {
+        $fd = (int) $this->request->input('fd');
+
+        go(function () use ($fd) {
+            sleep(1);
+            $this->sender->close($fd);
+        });
+
+        return $this->response->success();
+    }
+
+    public function send()
+    {
+        $fd = (int) $this->request->input('fd');
+        $id = (string) $this->request->input('id');
+
+        $this->sender->push($fd, $id);
+
+        return $this->response->success();
     }
 }

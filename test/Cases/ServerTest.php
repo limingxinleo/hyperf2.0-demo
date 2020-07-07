@@ -46,7 +46,24 @@ class ServerTest extends HttpTestCase
 
         $data = $client->recv(1);
         $data = Json::decode($data->data);
-        $this->assertGreaterThan(0, $data['fd']);
+        $this->assertGreaterThan(0, $fd = $data['fd']);
         $this->assertSame($uniqid, $data['data']);
+
+        $this->json('/server/send', [
+            'fd' => $fd,
+            'id' => $id = uniqid(),
+        ]);
+
+        $data = $client->recv(1);
+        $this->assertSame($id, $data->data);
+
+        $this->json('/server/close', [
+            'fd' => $fd,
+        ]);
+
+        $time = microtime(true);
+        $data = $client->recv(3);
+        $this->assertFalse($data);
+        $this->assertLessThan(3, microtime(true) - $time);
     }
 }
