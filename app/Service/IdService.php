@@ -11,10 +11,23 @@ declare(strict_types=1);
  */
 namespace App\Service;
 
+use Hyperf\Config\Annotation\Value;
+
 class IdService
 {
+    /**
+     * @Value(key="demo.id")
+     * @var string
+     */
+    protected $id;
+
     public function id()
     {
         return uniqid();
+    }
+
+    public function idFromConfig()
+    {
+        return $this->id;
     }
 }
