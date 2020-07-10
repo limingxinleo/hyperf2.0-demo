@@ -32,7 +32,17 @@ class SessionTest extends HttpTestCase
         ]);
 
         $response = $client->get('/session/index');
+        var_dump($response->getHeaderLine('Set-Cookie'));
         $this->assertStringContainsString('HYPERF_SESSION_ID=', $response->getHeaderLine('Set-Cookie'));
         $this->assertSame(Json::encode(['code' => 0, 'data' => 'Hello World.']), $response->getBody()->getContents());
+
+        $client = new Client([
+            'handler' => HandlerStack::create(new CoroutineHandler()),
+            'base_uri' => 'http://127.0.0.1:9501',
+            'timeout' => 1,
+        ]);
+        $response = $client->get('/session/index2');
+        var_dump($response->getHeaderLine('Set-Cookie'));
+        $this->assertStringContainsString('HYPERF_SESSION_ID=', $response->getHeaderLine('Set-Cookie'));
     }
 }

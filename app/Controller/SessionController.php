@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\Guzzle\ClientFactory;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -21,5 +22,12 @@ class SessionController extends Controller
     public function index()
     {
         return $this->response->success('Hello World.');
+    }
+
+    public function index2()
+    {
+        $client = di()->get(ClientFactory::class)->create();
+
+        return $client->get('http://127.0.0.1:9501/session/index');
     }
 }
