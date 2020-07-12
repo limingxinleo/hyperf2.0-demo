@@ -32,7 +32,6 @@ class SessionTest extends HttpTestCase
         ]);
 
         $response = $client->get('/session/index');
-        var_dump($response->getHeaderLine('Set-Cookie'));
         $this->assertStringContainsString('HYPERF_SESSION_ID=', $response->getHeaderLine('Set-Cookie'));
         $this->assertSame(Json::encode(['code' => 0, 'data' => 'Hello World.']), $response->getBody()->getContents());
 
@@ -42,7 +41,6 @@ class SessionTest extends HttpTestCase
             'timeout' => 1,
         ]);
         $response = $client->get('/session/index2');
-        var_dump($response->getHeaderLine('Set-Cookie'));
         $this->assertStringContainsString('HYPERF_SESSION_ID=', $response->getHeaderLine('Set-Cookie'));
     }
 }

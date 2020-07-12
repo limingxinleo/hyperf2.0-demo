@@ -45,6 +45,16 @@ class ServerController extends Controller
         return $this->response->success($result);
     }
 
+    public function rpcException()
+    {
+        try {
+            $result = $this->idGenerator->exception();
+        } catch (\Throwable $exception) {
+        }
+
+        return $this->response->success($exception->getMessage());
+    }
+
     public function close()
     {
         $fd = (int) $this->request->input('fd');

@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Rpc\JsonRpc;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Service\Dao\UserDao;
 use Hyperf\RpcServer\Annotation\RpcService;
 
@@ -23,5 +25,10 @@ class IdGenerateService implements IdGenerateInterface
     {
         $user = di()->get(UserDao::class)->first(1);
         return (string) $id . $user->name . uniqid();
+    }
+
+    public function exception()
+    {
+        throw new BusinessException(ErrorCode::SERVER_ERROR, 'Inner Server Error');
     }
 }

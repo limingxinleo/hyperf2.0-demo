@@ -36,6 +36,9 @@ class ServerTest extends HttpTestCase
         $res = $this->get('/server/rpc');
         $this->assertSame(0, $res['code']);
         $this->assertStringContainsString('sssHyperf', $res['data']);
+
+        $res = $this->get('/server/rpcException');
+        $this->assertSame('Inner Server Error', $res['data']);
     }
 
     public function testWebSocket()
