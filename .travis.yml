@@ -11,6 +11,9 @@ matrix:
     - php: 7.4
       env: SW_VERSION="4.5.2"
 
+env:
+  - DAEMONIZE=1
+
 services:
   - mysql
   - redis
@@ -32,7 +35,7 @@ install:
 before_script:
   - cd $TRAVIS_BUILD_DIR
   - composer config -g process-timeout 900 && composer update -o
-  - php bin/hyperf.php start &
+  - php bin/hyperf.php start
 
 script:
   - composer test
