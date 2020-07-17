@@ -5,14 +5,11 @@ sudo: required
 matrix:
   include:
     - php: 7.2
-      env: SW_VERSION="4.5.2"
+      env: SW_VERSION="4.5.2" DAEMONIZE=1
     - php: 7.3
-      env: SW_VERSION="4.5.2"
+      env: SW_VERSION="4.5.2" DAEMONIZE=1
     - php: 7.4
-      env: SW_VERSION="4.5.2"
-
-env:
-  - DAEMONIZE=1
+      env: SW_VERSION="4.5.2" DAEMONIZE=1
 
 services:
   - mysql
