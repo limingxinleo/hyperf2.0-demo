@@ -28,8 +28,17 @@ class SnowflakeController extends Controller
 
     public function index()
     {
-        return $this->response->success(
-            $this->idGenerator->generate()
-        );
+        $id = $this->idGenerator->generate();
+        $count = strlen((string) $id);
+        var_dump($count);
+        return $this->response->success($id);
+    }
+
+    public function meta()
+    {
+        $id = PHP_INT_MAX;
+        $meta = $this->idGenerator->degenerate($id);
+        var_dump($meta->getTimestamp() / 3600 / 24 / 365);
+        return $this->response->success();
     }
 }
