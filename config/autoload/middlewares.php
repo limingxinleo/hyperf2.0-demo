@@ -14,6 +14,6 @@ return [
         Hyperf\Session\Middleware\SessionMiddleware::class,
     ],
     'ws' => [
-        // Validate
+        Hyperf\Validation\Middleware\ValidationMiddleware::class,
     ],
 ];
