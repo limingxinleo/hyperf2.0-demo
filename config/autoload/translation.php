@@ -10,10 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    'http' => [
-        Hyperf\Session\Middleware\SessionMiddleware::class,
-    ],
-    'ws' => [
-        // Validate
-    ],
+    'locale' => 'zh_CN',
+    'fallback_locale' => 'en',
+    'path' => BASE_PATH . '/storage/languages',
 ];
