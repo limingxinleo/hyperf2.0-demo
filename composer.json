@@ -35,6 +35,7 @@
         "hyperf/guzzle": "2.0.x-dev",
         "hyperf/http-message": "2.0.x-dev",
         "hyperf/http-server": "2.0.x-dev",
+        "hyperf/http-server-route": "*",
         "hyperf/json-rpc": "2.0.x-dev",
         "hyperf/logger": "2.0.x-dev",
         "hyperf/model-cache": "2.0.x-dev",
@@ -93,6 +94,10 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "/Users/limingxin/Applications/GitHub/limingxinleo/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"

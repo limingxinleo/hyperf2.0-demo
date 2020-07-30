@@ -11,6 +11,9 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\HttpServerRoute\RouteContext;
+use function Hyperf\HttpServerRoute\route;
+
 class IndexController extends Controller
 {
     public function index()
@@ -21,6 +24,14 @@ class IndexController extends Controller
             'user' => $user,
             'method' => $method,
             'message' => 'Hello Hyperf.',
+        ]);
+    }
+
+    public function info(?int $id)
+    {
+        return $this->response->success([
+            route('index.info', ['id' => $id]),
+            di()->get(RouteContext::class)->getRouteName(),
         ]);
     }
 }
