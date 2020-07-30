@@ -11,9 +11,15 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\HttpServer\Annotation\GetMapping;
+use Hyperf\HttpServer\Annotation\Middleware;
 use Hyperf\HttpServerRoute\RouteContext;
+use Hyperf\HttpServer\Annotation\Controller as ControllerAnnotation;
 use function Hyperf\HttpServerRoute\route;
 
+/**
+ * @ControllerAnnotation(prefix="index")
+ */
 class IndexController extends Controller
 {
     public function index()
@@ -31,7 +37,16 @@ class IndexController extends Controller
     {
         return $this->response->success([
             route('index.info', ['id' => $id]),
+            route('index.data'),
             di()->get(RouteContext::class)->getRouteName(),
         ]);
+    }
+
+    /**
+     * @GetMapping(path="data", options={"name": "index.data"})
+     */
+    public function data()
+    {
+
     }
 }

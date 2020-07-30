@@ -26,6 +26,7 @@ class RouteTest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertSame([
             '/index/' . $id,
+            '/index/data',
             'index.info',
         ], $res['data']);
     }
