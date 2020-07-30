@@ -67,7 +67,9 @@ class ServerTest extends HttpTestCase
         ]);
 
         $data = $client->recv(10);
-        $this->assertSame(8, $data->opcode);
-        $this->assertTrue($data->finish);
+        if ($data !== false) {
+            $this->assertSame(8, $data->opcode);
+            $this->assertTrue($data->finish);
+        }
     }
 }

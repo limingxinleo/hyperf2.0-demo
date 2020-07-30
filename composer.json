@@ -93,10 +93,6 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
-        "h": {
-            "type": "path",
-            "url": "/Users/limingxin/Applications/GitHub/limingxinleo/hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
