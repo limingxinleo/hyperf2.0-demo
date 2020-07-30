@@ -11,10 +11,9 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
-use Hyperf\HttpServer\Annotation\GetMapping;
-use Hyperf\HttpServer\Annotation\Middleware;
-use Hyperf\HttpServerRoute\RouteContext;
 use Hyperf\HttpServer\Annotation\Controller as ControllerAnnotation;
+use Hyperf\HttpServer\Annotation\GetMapping;
+use Hyperf\HttpServerRoute\RouteContext;
 use function Hyperf\HttpServerRoute\route;
 
 /**
@@ -47,6 +46,5 @@ class IndexController extends Controller
      */
     public function data()
     {
-
     }
 }
