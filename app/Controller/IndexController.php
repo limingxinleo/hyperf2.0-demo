@@ -46,5 +46,6 @@ class IndexController extends Controller
      */
     public function data()
     {
+        return $this->response->success();
     }
 }
