@@ -13,7 +13,7 @@ namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\Controller as ControllerAnnotation;
 use Hyperf\HttpServer\Annotation\GetMapping;
-use Hyperf\HttpServerRoute\RouteContext;
+use Hyperf\HttpServer\Router\Route;
 use function Hyperf\HttpServerRoute\route;
 
 /**
@@ -34,10 +34,11 @@ class IndexController extends Controller
 
     public function info(?int $id)
     {
+        $route = di()->get(Route::class);
         return $this->response->success([
-            route('index.info', ['id' => $id]),
-            route('index.data'),
-            di()->get(RouteContext::class)->getRouteName(),
+            $route->getPath('index.info', ['id' => $id]),
+            $route->getPath('index.data'),
+            $route->getName(),
         ]);
     }
 
