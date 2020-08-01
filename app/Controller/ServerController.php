@@ -14,6 +14,7 @@ namespace App\Controller;
 use App\Rpc\JsonRpc\IdGenerateInterface;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Utils\Str;
 use Hyperf\WebSocketServer\Sender;
 
 /**
@@ -75,5 +76,22 @@ class ServerController extends Controller
         $this->sender->push($fd, $id);
 
         return $this->response->success();
+    }
+
+    public function large()
+    {
+        $data = [
+            'id' => uniqid(),
+            'framework' => 'Hyperf',
+            'string' => Str::random(100),
+            'int' => rand(10000, 99999),
+        ];
+
+        $result = [];
+        for ($i = 0; $i < 10000; ++$i) {
+            $result[] = $data;
+        }
+
+        return $this->response->success($result);
     }
 }
