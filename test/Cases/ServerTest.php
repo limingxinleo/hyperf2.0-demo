@@ -72,4 +72,18 @@ class ServerTest extends HttpTestCase
             $this->assertTrue($data->finish);
         }
     }
+
+    public function testTcpServer()
+    {
+        $client = new \Swoole\Client(SWOOLE_SOCK_TCP);
+        $client->connect('127.0.0.1', 9504);
+        $client->send($id = uniqid());
+        $this->assertSame('recv:' . $id, $client->recv());
+
+        $client->send($id = uniqid());
+        $this->assertSame('recv:' . $id, $client->recv());
+
+        $client->send('Hello World.');
+        $this->assertSame('recv:Hello World.', $client->recv());
+    }
 }

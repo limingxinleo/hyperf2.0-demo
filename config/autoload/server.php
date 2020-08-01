@@ -55,6 +55,16 @@ return [
                 SwooleEvent::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
             ],
         ],
+        [
+            'name' => 'tcp',
+            'type' => Server::SERVER_BASE,
+            'host' => '0.0.0.0',
+            'port' => 9504,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_RECEIVE => [App\Controller\TcpServer::class, 'onReceive'],
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,
