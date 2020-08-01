@@ -11,7 +11,9 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use Hyperf\Utils\Codec\Json;
 use HyperfTest\HttpTestCase;
+use Swoole\Coroutine\Http\Client;
 
 /**
  * @internal
@@ -41,5 +43,15 @@ class ExampleTest extends HttpTestCase
         $this->assertSame('Hello Hyperf.', $res['data']['message']);
         $this->assertSame('POST', $res['data']['method']);
         $this->assertSame('limx', $res['data']['user']);
+    }
+
+    public function testKeepaliveConnection()
+    {
+        $client = new Client('127.0.0.1', 9501);
+        $client->get('/?user=limx');
+        $this->assertSame('limx', Json::decode($client->getBody())['data']['user']);
+
+        $client->get('/?user=Agnes');
+        $this->assertSame('Agnes', Json::decode($client->getBody())['data']['user']);
     }
 }
