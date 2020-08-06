@@ -14,6 +14,7 @@ namespace App\Controller;
 use App\Model\Image;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
+use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -59,5 +60,12 @@ class ModelController extends Controller
             'imageable' => $image->imageable->toArray(),
             'image' => $image->toArray(),
         ]);
+    }
+
+    public function object()
+    {
+        $res = Db::selectOne('SELECT * FROM `user` WHERE `id` = 1;');
+        var_dump($res);
+        return $this->response->success($res);
     }
 }
