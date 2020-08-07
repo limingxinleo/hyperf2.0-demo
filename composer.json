@@ -50,7 +50,8 @@
         "hyperf/utils": "2.0.x-dev",
         "hyperf/validation": "2.0.x-dev",
         "hyperf/websocket-client": "2.0.x-dev",
-        "hyperf/websocket-server": "2.0.x-dev"
+        "hyperf/websocket-server": "2.0.x-dev",
+        "hyperf/resource": "2.0.x-dev"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
@@ -93,6 +94,10 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "/Users/limingxin/Applications/GitHub/limingxinleo/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
