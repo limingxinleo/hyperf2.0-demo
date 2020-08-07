@@ -13,11 +13,11 @@ namespace App\Controller;
 
 use App\Model\Image;
 use App\Model\User;
-use App\Resource\UserResource;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Paginator\LengthAwarePaginator;
 
 /**
  * @AutoController(prefix="model")
@@ -73,7 +73,16 @@ class ModelController extends Controller
 
     public function resource()
     {
-        $user = User::query()->find(1);
-        return new UserResource($user);
+        return User::query()->find(1);
+    }
+
+    public function pagination()
+    {
+        $items = [
+            ['id' => 1, 'name' => 'Hyperf'],
+            ['id' => 2, 'name' => 'Swoole'],
+        ];
+        $page = new LengthAwarePaginator($items, 10, 2);
+        return $this->response->success($page->toArray());
     }
 }
