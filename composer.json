@@ -23,6 +23,7 @@
         "hyperf/cache": "2.0.x-dev",
         "hyperf/command": "2.0.x-dev",
         "hyperf/config": "2.0.x-dev",
+        "hyperf/config-etcd": "2.0.x-dev",
         "hyperf/constants": "2.0.x-dev",
         "hyperf/contract": "2.0.x-dev",
         "hyperf/database": "2.0.x-dev",
