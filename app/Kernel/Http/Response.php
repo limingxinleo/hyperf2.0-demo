@@ -67,6 +67,11 @@ class Response
         return $this;
     }
 
+    public function download(string $file, string $name = '')
+    {
+        return $this->response->download($file, $name);
+    }
+
     public function handleException(HttpException $throwable): PsrResponseInterface
     {
         return $this->response()

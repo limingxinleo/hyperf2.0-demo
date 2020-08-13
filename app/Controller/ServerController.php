@@ -94,4 +94,11 @@ class ServerController extends Controller
 
         return $this->response->success($result);
     }
+
+    public function download()
+    {
+        $file = BASE_PATH . '/README.md';
+
+        return $this->response->download($file, 'test.md');
+    }
 }
