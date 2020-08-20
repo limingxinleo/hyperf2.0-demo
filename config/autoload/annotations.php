@@ -21,6 +21,7 @@ return [
         ],
         'class_map' => [
             // Coroutine::class => BASE_PATH . '/app/Kernel/ClassMap/Coroutine.php',
+            // Hyperf\Di\Resolver\ResolverDispatcher::class => BASE_PATH . '/vendor/hyperf/di/class_map/Resolver/ResolverDispatcher.php',
         ],
     ],
 ];

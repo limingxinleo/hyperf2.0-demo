@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Service\Aop\Aop2Service;
 use App\Service\Aop\AopService;
+use App\Service\Circle\CircleA;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -45,5 +46,16 @@ class AopController extends Controller
         $result[] = $aop->getParentString('1');
         $result[] = $aop->getTraitString('1');
         return $this->response->success($result);
+    }
+
+    public function circle()
+    {
+        try {
+            di()->get(CircleA::class);
+        } catch (\Throwable $exception) {
+            var_dump($exception->getMessage());
+
+        }
+        return $this->response->success();
     }
 }
