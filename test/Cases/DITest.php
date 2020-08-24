@@ -26,9 +26,10 @@ class DITest extends HttpTestCase
         $this->assertSame(5, count($res['data']));
     }
 
-    public function testMagicMethods(){
+    public function testMagicMethods()
+    {
         $res = $this->get('/di/methods');
         $this->assertSame(0, $res['code']);
-        $this->assertSame(['App\\Rpc\\JsonRpc\\methods', 'App\\Rpc\\JsonRpc\\methods'], count($res['data']));
+        $this->assertSame(['App\\Rpc\\JsonRpc\\TestService::methods', 'methods'], $res['data']);
     }
 }
