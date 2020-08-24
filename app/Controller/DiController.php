@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Rpc\JsonRpc\TestService;
 use App\Service\DemoService;
 use App\Service\Di\DiService;
 use Hyperf\Di\Annotation\Inject;
@@ -43,5 +44,12 @@ class DiController extends Controller
         $result = [];
         $result[] = di()->get(DemoService::class)->idService->id();
         return $this->response->success($result);
+    }
+
+    public function methods()
+    {
+        return $this->response->success(
+            di()->get(TestService::class)->methods()
+        );
     }
 }

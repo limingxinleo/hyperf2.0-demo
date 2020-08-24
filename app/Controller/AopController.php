@@ -54,7 +54,6 @@ class AopController extends Controller
             di()->get(CircleA::class);
         } catch (\Throwable $exception) {
             var_dump($exception->getMessage());
-
         }
         return $this->response->success();
     }
