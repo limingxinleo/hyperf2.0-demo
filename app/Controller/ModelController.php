@@ -85,4 +85,15 @@ class ModelController extends Controller
         $page = new LengthAwarePaginator($items, 10, 2);
         return $this->response->success($page->toArray());
     }
+
+    public function insertGetId()
+    {
+        $res = Db::connection()->table('images')->insertGetId([
+            'url' => 'https://avatars2.githubusercontent.com/u/44228082?s=200&v=4',
+            'imageable_id' => 0,
+            'imageable_type' => '',
+        ]);
+
+        return $this->response->success($res);
+    }
 }
