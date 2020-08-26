@@ -43,11 +43,11 @@ return [
     'config_append_node' => 'test',
     'listener_config' => [
         // dataId, group, tenant, type, content
-        [
-            'tenant' => 'namespace_id', // corresponding with service.namespaceId
-            'data_id' => 'hyperf-service-config1',
-            'group' => 'DEFAULT_GROUP',
-        ],
+        // [
+        //     'tenant' => 'namespace_id', // corresponding with service.namespaceId
+        //     'data_id' => 'hyperf-service-config',
+        //     'group' => 'DEFAULT_GROUP',
+        // ],
         //[
         //    'data_id' => 'hyperf-service-config-yml',
         //    'group' => 'DEFAULT_GROUP',
