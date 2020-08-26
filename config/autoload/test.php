@@ -11,4 +11,7 @@ declare(strict_types=1);
  */
 return [
     'message' => 'Hello Hyperf.',
+    'data' => [
+        'id' => 1,
+    ],
 ];
