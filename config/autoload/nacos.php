@@ -45,7 +45,7 @@ return [
         // dataId, group, tenant, type, content
         [
             'tenant' => 'namespace_id', // corresponding with service.namespaceId
-            'data_id' => 'hyperf-service-config',
+            'data_id' => 'hyperf-service-config1',
             'group' => 'DEFAULT_GROUP',
         ],
         //[
