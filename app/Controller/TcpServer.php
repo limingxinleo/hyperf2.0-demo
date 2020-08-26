@@ -12,11 +12,16 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Hyperf\Contract\OnReceiveInterface;
+use Swoole\Server;
 
 class TcpServer implements OnReceiveInterface
 {
     public function onReceive($server, int $fd, int $fromId, string $data): void
     {
-        $server->send($fd, 'recv:' . $data);
+        if($server instanceof Server){
+            $server->send($fd, 'recv:' . $data);
+        }else{
+            $server->send('recv:' . $data);
+        }
     }
 }

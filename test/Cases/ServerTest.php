@@ -47,7 +47,7 @@ class ServerTest extends HttpTestCase
         $ret = $client->push($uniqid = uniqid());
         $this->assertTrue($ret);
 
-        $data = $client->recv(1);
+        $data = $client->recv(5);
         $data = Json::decode($data->data);
         $this->assertGreaterThan(0, $fd = $data['fd']);
         $this->assertSame($uniqid, $data['data']);
