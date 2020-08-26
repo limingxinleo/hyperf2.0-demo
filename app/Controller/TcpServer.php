@@ -18,9 +18,9 @@ class TcpServer implements OnReceiveInterface
 {
     public function onReceive($server, int $fd, int $fromId, string $data): void
     {
-        if($server instanceof Server){
+        if ($server instanceof Server) {
             $server->send($fd, 'recv:' . $data);
-        }else{
+        } else {
             $server->send('recv:' . $data);
         }
     }
