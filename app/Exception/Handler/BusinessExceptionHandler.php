@@ -17,6 +17,7 @@ use App\Kernel\Http\Response;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\ExceptionHandler;
 use Hyperf\HttpMessage\Exception\HttpException;
+use Hyperf\Validation\ValidationException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
@@ -49,6 +50,10 @@ class BusinessExceptionHandler extends ExceptionHandler
     {
         if ($throwable instanceof HttpException) {
             return $this->response->handleException($throwable);
+        }
+
+        if ($throwable instanceof ValidationException) {
+            return $this->response->fail(ErrorCode::SERVER_ERROR, $throwable->validator->errors()->first());
         }
 
         if ($throwable instanceof BusinessException) {
