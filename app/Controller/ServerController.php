@@ -11,7 +11,9 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Amqp\Producer\DebugProducer;
 use App\Rpc\JsonRpc\IdGenerateInterface;
+use Hyperf\Amqp\Producer;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Utils\Str;
@@ -100,5 +102,13 @@ class ServerController extends Controller
         $file = BASE_PATH . '/README.md';
 
         return $this->response->download($file, 'test.md');
+    }
+
+    public function amqp()
+    {
+        for ($i = 0; $i < 100; ++$i) {
+            di()->get(Producer::class)->produce(new DebugProducer(['id' => $i]));
+        }
+        return $this->response->success();
     }
 }

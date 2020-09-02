@@ -25,7 +25,7 @@ class DebugProcess extends AbstractProcess
     {
         while (Driver::$running) {
             sleep(5);
-            var_dump(di()->get(ConfigInterface::class)->get('test'));
+            // var_dump(di()->get(ConfigInterface::class)->get('test'));
         }
     }
 }
