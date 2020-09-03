@@ -97,4 +97,11 @@ class ModelController extends Controller
 
         return $this->response->success($res);
     }
+
+    public function datetime()
+    {
+        $res = Db::select('SELECT NOW();');
+
+        return $this->response->success($res);
+    }
 }
