@@ -14,7 +14,7 @@ namespace App\Model;
 /**
  * @property int $id
  * @property int $count
- * @property float $float_num
+ * @property string $float_num
  * @property string $str
  * @property string $json
  * @property \Carbon\Carbon $created_at
@@ -41,5 +41,5 @@ class UserExt extends Model
      *
      * @var array
      */
-    protected $casts = ['id' => 'integer', 'count' => 'integer', 'float_num' => 'float', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected $casts = ['id' => 'integer', 'count' => 'integer', 'float_num' => 'decimal:2', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 }

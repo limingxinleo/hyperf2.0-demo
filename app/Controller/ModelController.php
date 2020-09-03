@@ -41,6 +41,7 @@ class ModelController extends Controller
         return $this->response->success([
             'user' => $user->toArray(),
             'books' => $user->books->toArray(),
+            'ext' => $user->ext->toArray(),
         ]);
     }
 

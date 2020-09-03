@@ -43,5 +43,6 @@ class DebugCommand extends HyperfCommand
     {
         var_dump($this->input->getArguments());
         var_dump($this->input->getOptions());
+        var_dump(config('test'));
     }
 }

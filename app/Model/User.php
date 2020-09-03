@@ -18,6 +18,7 @@ namespace App\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \App\Model\Book[]|\Hyperf\Database\Model\Collection $books
+ * @property \App\Model\UserExt $ext
  * @property \App\Model\Image $image
  */
 class User extends Model
@@ -51,5 +52,10 @@ class User extends Model
     public function books()
     {
         return $this->hasMany(Book::class, 'user_id', 'id');
+    }
+
+    public function ext()
+    {
+        return $this->hasOne(UserExt::class, 'id', 'id');
     }
 }
