@@ -18,3 +18,7 @@ Router::get('/index/data.html', App\Controller\IndexController::class . '::data'
 Router::addServer('ws', function () {
     Router::get('/', App\Controller\WebSocketController::class);
 });
+
+Router::addServer('http2', function () {
+    Router::get('/image', App\Controller\IndexController::class . '::image');
+});

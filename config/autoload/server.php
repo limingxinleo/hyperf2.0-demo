@@ -65,6 +65,16 @@ return [
                 SwooleEvent::ON_RECEIVE => [App\Controller\TcpServer::class, 'onReceive'],
             ],
         ],
+        [
+            'name' => 'http2',
+            'type' => Server::SERVER_HTTP,
+            'host' => '0.0.0.0',
+            'port' => 9505,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_REQUEST => [App\Kernel\Http\Server::class, 'onRequest'],
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,

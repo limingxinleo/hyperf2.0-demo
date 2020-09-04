@@ -39,7 +39,6 @@ class PaginatorAspect extends AbstractAspect
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
         $result = $proceedingJoinPoint->process();
-        var_dump($result);
         return $result;
     }
 }

@@ -49,4 +49,9 @@ class IndexController extends Controller
     {
         return $this->response->success();
     }
+
+    public function image()
+    {
+        return $this->response->success();
+    }
 }
