@@ -104,4 +104,11 @@ class ModelController extends Controller
 
         return $this->response->success($res);
     }
+
+    public function cache()
+    {
+        return $this->response->success(
+            User::findFromCache(1)->toArray()
+        );
+    }
 }

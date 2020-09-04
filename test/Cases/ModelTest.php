@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use Hyperf\Redis\Redis;
 use HyperfTest\HttpTestCase;
 
 /**
@@ -49,5 +50,17 @@ class ModelTest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertSame(1, $res['data']['imageable']['id']);
         $this->assertSame(1, $res['data']['image']['id']);
+    }
+
+    public function testModelFindFromCache()
+    {
+        $res = $this->get('/model/cache');
+        $this->assertSame(0, $res['code']);
+
+        $data = di()->get(Redis::class)->hGetAll('{mc:default:m:user}:id:1');
+        $this->assertSame($res['data']['name'], $data['name']);
+        $this->assertEquals($res['data']['gender'], $data['gender']);
+        $this->assertEquals($res['data']['id'], $data['id']);
+        $this->assertSame('DEFAULT', $data['HF-DATA']);
     }
 }
