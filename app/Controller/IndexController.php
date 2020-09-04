@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Annotation\Controller as ControllerAnnotation;
 use Hyperf\HttpServer\Annotation\GetMapping;
 use Hyperf\HttpServer\Router\Route;
@@ -52,6 +53,9 @@ class IndexController extends Controller
 
     public function image()
     {
-        return $this->response->success();
+        $image = file_get_contents(BASE_PATH . '/bg.jpg');
+        return $this->response->response()
+            ->withAddedHeader('Content-Type', 'image/jpeg')
+            ->withBody(new SwooleStream($image));
     }
 }
