@@ -111,4 +111,10 @@ class ServerController extends Controller
         }
         return $this->response->success();
     }
+
+    public function ip()
+    {
+        $ip = $this->request->getServerParams()['remote_addr'];
+        return $this->response->success($ip);
+    }
 }
