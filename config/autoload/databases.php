@@ -46,6 +46,7 @@ return [
                 'refresh_fillable' => true,
                 'table_mapping' => [],
                 'visitors' => [
+                    // Hyperf\Database\Commands\Ast\ModelRewriteGetterSetterVisitor::class,
                 ],
             ],
         ],
