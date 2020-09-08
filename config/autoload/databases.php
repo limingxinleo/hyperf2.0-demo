@@ -45,6 +45,8 @@ return [
                 'uses' => '',
                 'refresh_fillable' => true,
                 'table_mapping' => [],
+                'visitors' => [
+                ],
             ],
         ],
     ],
