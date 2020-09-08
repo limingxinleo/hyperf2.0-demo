@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Service\QueueService;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Redis\Redis;
 
@@ -45,5 +46,14 @@ LUA;
         $res = di()->get(Redis::class)->eval($lua, ['lua:test', 'lua:test:lock', '1', '1', 10, 10], 2);
 
         return $this->response->success($res);
+    }
+
+    public function sleep()
+    {
+        $time = (int) $this->request->input('time', 5);
+
+        di()->get(QueueService::class)->sleep($time);
+
+        return $this->response->success();
     }
 }
