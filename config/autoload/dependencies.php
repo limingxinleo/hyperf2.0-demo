@@ -14,4 +14,5 @@ return [
     Hyperf\Server\Listener\AfterWorkerStartListener::class => App\Kernel\Http\WorkerStartListener::class,
     Hyperf\Snowflake\MetaGeneratorInterface::class => App\Kernel\Factory\MetaGeneratorFactory::class,
     Hyperf\Database\Commands\Ast\ModelUpdateVisitor::class => \App\Kernel\Visitor\ModelUpdateVisitor::class,
+    'SocketIOServer' => Hyperf\WebSocketServer\Server::class,
 ];

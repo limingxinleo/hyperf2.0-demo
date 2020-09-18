@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户2</title>
+</head>
+<body>
+        <input type="text" id="value" placeholder="要获取的输入的值"/>
+        <input  id="button" type="button" value="发送单聊" >
+		<br>
+		<input type="text" id="value1" placeholder="要获取的输入的值"/>
+        <input  id="button1" type="button" value="发送群聊" >
+		<br>
+		<input  id="button2" type="button" value="加入群聊" >
+</body>
+<script src="https://cdn.bootcss.com/socket.io/2.3.0/socket.io.js"></script>
+<script>
+    //console.log(11);
+    var socket = io('ws://127.0.0.1:9506', { transports: ["websocket"] });
+    socket.on('connect', data => {
+		console.log('connect');
+        //socket.emit('event', '{"from":1,"to":2,"message":"Hello zhangsan."}');
+		socket.emit('mappingUser', 2);
+        //console.log('ok');
+        //var ha =socket.emit('event', '{"from":2,"to":1,"message":"Hello lisi."}');
+		//var ha =socket.emit('event', 'nnn');
+		//console.log(ha);
+        //socket.emit('join-room', 'room1');
+
+        //setInterval(function () {
+            //socket.emit('say', '{"room":"room1", "message":"Hello bbbbb."}');
+
+        //}, 1000);
+
+    });
+
+	var btn = document.getElementById("button");
+    btn.onclick =function(){
+        var G=document.getElementById('value').value;
+		//console.log(G);
+		var obj = {"to":1,"message":G};
+		//console.log(JSON.stringify(obj));
+		socket.emit('msg', JSON.stringify(obj));
+    }
+
+	var btn1 = document.getElementById("button1");
+    btn1.onclick =function(){
+        var C=document.getElementById('value1').value;
+		//console.log(C);
+		var obj = {"group":1,"message":C};
+		//console.log(JSON.stringify(obj));
+		socket.emit('group-msg', JSON.stringify(obj));
+    }
+
+	var btn2 = document.getElementById("button2");
+	btn2.onclick =function(){
+
+		var obj = {"group":1,"inviter":"邀请人111","join":"加入人222","first":true};
+		//console.log(JSON.stringify(obj));
+		socket.emit('join-room', JSON.stringify(obj));
+    }
+	socket.on('event', console.log);
+
+</script>
+</html>

@@ -51,6 +51,7 @@
         "hyperf/session": "2.0.x-dev",
         "hyperf/signal": "2.0.x-dev",
         "hyperf/snowflake": "2.0.x-dev",
+        "hyperf/socketio-server": "2.0.x-dev",
         "hyperf/utils": "2.0.x-dev",
         "hyperf/validation": "2.0.x-dev",
         "hyperf/websocket-client": "2.0.x-dev",

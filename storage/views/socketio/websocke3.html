@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户3</title>
+</head>
+<body>
+
+</body>
+<script src="https://cdn.bootcss.com/socket.io/2.3.0/socket.io.js"></script>
+<script>
+    //console.log(11);
+    var socket = io('ws://127.0.0.1:9506', { transports: ["websocket"] });
+    socket.on('connect', data => {
+        console.log('connect');
+		socket.emit('mappingUser', 3);
+        //var ha =socket.emit('event', '{"from":3,"to":2,"message":"Hello wangwu."}');
+		//var ha =socket.emit('event', 'nnn');
+		//console.log(ha);
+        //socket.emit('join-room', 'room1');
+
+        //setInterval(function () {
+        //    //socket.emit('say', '{"room":"room1", "message":"Hello bbbbb."}');
+		//	socket.on('event', console.log);
+        //}, 1000);
+		var obj = {"group":1,"inviter":"邀请人333","join":"加入人333","first":true};
+		//console.log(JSON.stringify(obj));
+		socket.emit('join-room', JSON.stringify(obj));
+    });
+
+    socket.on('event', console.log);
+</script>
+</html>

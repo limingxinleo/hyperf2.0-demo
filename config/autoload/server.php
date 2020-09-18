@@ -75,6 +75,18 @@ return [
                 SwooleEvent::ON_REQUEST => [App\Kernel\Http\Server::class, 'onRequest'],
             ],
         ],
+        [
+            'name' => 'socket-io',
+            'type' => Server::SERVER_WEBSOCKET,
+            'host' => '0.0.0.0',
+            'port' => 9506,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_HAND_SHAKE => ['SocketIOServer', 'onHandShake'],
+                SwooleEvent::ON_MESSAGE => ['SocketIOServer', 'onMessage'],
+                SwooleEvent::ON_CLOSE => ['SocketIOServer', 'onClose'],
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,
