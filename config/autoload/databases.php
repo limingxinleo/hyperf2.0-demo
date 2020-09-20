@@ -31,6 +31,7 @@ return [
         ],
         'cache' => [
             'handler' => Hyperf\ModelCache\Handler\RedisHandler::class,
+            // 'handler' => Hyperf\ModelCache\Handler\RedisStringHandler::class,
             'cache_key' => '{mc:%s:m:%s}:%s:%s',
             'prefix' => 'default',
             'ttl' => 3600 * 24,
