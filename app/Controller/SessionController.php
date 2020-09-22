@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\Contract\SessionInterface;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\Guzzle\ClientFactory;
 use Hyperf\HttpMessage\Cookie\Cookie;
 use Hyperf\HttpMessage\Stream\SwooleStream;
@@ -22,6 +24,12 @@ use Hyperf\Utils\Codec\Json;
  */
 class SessionController extends Controller
 {
+    /**
+     * @Inject
+     * @var SessionInterface
+     */
+    protected $session;
+
     public function index()
     {
         $response = $this->response->response();
@@ -51,5 +59,19 @@ class SessionController extends Controller
         $client = di()->get(ClientFactory::class)->create();
 
         return $client->get('http://www.baidu.com/');
+    }
+
+    public function set()
+    {
+        $this->session->set('id', $this->request->input('id', uniqid()));
+
+        return $this->response->redirect('/session/get');
+    }
+
+    public function get()
+    {
+        return $this->response->success(
+            $this->session->get('id')
+        );
     }
 }
