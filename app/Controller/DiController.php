@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Rpc\JsonRpc\TestService;
 use App\Service\DemoService;
+use App\Service\Di\ClosureService;
 use App\Service\Di\DiService;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -43,6 +44,12 @@ class DiController extends Controller
     {
         $result = [];
         $result[] = di()->get(DemoService::class)->idService->id();
+        return $this->response->success($result);
+    }
+
+    public function closureValue()
+    {
+        $result = di()->get(ClosureService::class)->getClass()->service->id();
         return $this->response->success($result);
     }
 

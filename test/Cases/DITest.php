@@ -32,4 +32,11 @@ class DITest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertSame(['App\\Rpc\\JsonRpc\\TestService::methods', 'methods'], $res['data']);
     }
+
+    public function testClosureClass()
+    {
+        $res = $this->get('/di/closureValue');
+        $this->assertSame(0, $res['code']);
+        $this->assertIsString($res['data']);
+    }
 }
