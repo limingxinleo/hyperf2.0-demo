@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    'enable' => true,
+    'enable' => false,
     'packer' => Hyperf\Utils\Packer\JsonPacker::class,
     'use_standalone_process' => true,
     'namespaces' => [
