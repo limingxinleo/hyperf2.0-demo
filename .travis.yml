@@ -5,11 +5,11 @@ sudo: required
 matrix:
   include:
     - php: 7.2
-      env: SW_VERSION="4.5.4" DAEMONIZE=1 SCAN_CACHEABLE=(true)
+      env: SW_VERSION="4.5.4" SCAN_CACHEABLE=(true)
     - php: 7.3
-      env: SW_VERSION="4.5.4" DAEMONIZE=1 SCAN_CACHEABLE=(true)
+      env: SW_VERSION="4.5.4" SCAN_CACHEABLE=(true)
     - php: 7.4
-      env: SW_VERSION="4.5.4" DAEMONIZE=1 SCAN_CACHEABLE=(true)
+      env: SW_VERSION="4.5.4" SCAN_CACHEABLE=(true)
 
 services:
   - mysql
@@ -34,7 +34,7 @@ before_script:
   - cd $TRAVIS_BUILD_DIR
   - composer config -g process-timeout 900 && composer update -o
   - php bin/hyperf.php
-  - php bin/hyperf.php start
+  - php bin/hyperf.php start &
   - sleep 10
 
 script:
