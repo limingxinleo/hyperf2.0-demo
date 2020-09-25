@@ -30,4 +30,11 @@ class RedisTest extends HttpTestCase
         $this->assertTrue((bool) di()->get(Redis::class)->exists('lua:test'));
         $this->assertTrue((bool) di()->get(Redis::class)->exists('lua:test:lock'));
     }
+
+    public function testRedisMulti()
+    {
+        $res = $this->get('/redis/multi');
+
+        $this->assertSame(0, $res['code']);
+    }
 }

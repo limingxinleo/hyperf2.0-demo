@@ -12,14 +12,22 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\QueueService;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Redis\Redis;
+use Swoole\Coroutine\Channel;
 
 /**
  * @AutoController(prefix="redis")
  */
 class RedisController extends Controller
 {
+    /**
+     * @Inject
+     * @var Redis
+     */
+    protected $redis;
+
     public function lua()
     {
         $lua = <<<'LUA'
@@ -53,6 +61,28 @@ LUA;
         $time = (int) $this->request->input('time', 5);
 
         di()->get(QueueService::class)->sleep($time);
+
+        return $this->response->success();
+    }
+
+    public function multi()
+    {
+        $channel = new Channel(1);
+        go(function () use ($channel) {
+            defer(function () use ($channel) {
+                $channel->push(true);
+                $this->redis->sAdd('ssss', '3');
+            });
+            $this->redis->multi();
+            $this->redis->sAdd('ssss', '1');
+            $this->redis->exec();
+        });
+
+        $channel->pop();
+        $this->redis->sAdd('ssss', '4');
+        $this->redis->sAdd('ssss', '5');
+        $this->redis->sAdd('ssss', '6');
+        $this->redis->sAdd('ssss', '3');
 
         return $this->response->success();
     }
