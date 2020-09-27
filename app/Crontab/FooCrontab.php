@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Crontab;
 
+use Carbon\Carbon;
 use Hyperf\Crontab\Annotation\Crontab;
 
 /**
@@ -20,6 +21,7 @@ class FooCrontab
 {
     public function execute()
     {
-        var_dump(1);
+        $time = Carbon::now();
+        var_dump($time->toDateTimeString());
     }
 }
