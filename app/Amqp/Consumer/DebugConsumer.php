@@ -25,7 +25,8 @@ class DebugConsumer extends ConsumerMessage
     public function consumeMessage($data, AMQPMessage $message): string
     {
         sleep(1);
-        di()->get(Redis::class)->incrByFloat('test:incr', $data['id']);
+        $res = di()->get(Redis::class)->incrByFloat('test:incr', $data['id']);
+        var_dump($res);
         return Result::ACK;
     }
 }
