@@ -15,4 +15,5 @@ return [
     Hyperf\Snowflake\MetaGeneratorInterface::class => App\Kernel\Factory\MetaGeneratorFactory::class,
     Hyperf\Database\Commands\Ast\ModelUpdateVisitor::class => App\Kernel\Visitor\ModelUpdateVisitor::class,
     'SocketIOServer' => Hyperf\WebSocketServer\Server::class,
+    Hyperf\Crontab\Strategy\StrategyInterface::class => Hyperf\Crontab\Strategy\CoroutineStrategy::class,
 ];

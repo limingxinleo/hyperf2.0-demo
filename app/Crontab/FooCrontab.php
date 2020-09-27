@@ -9,7 +9,17 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-return [
-    Hyperf\AsyncQueue\Process\ConsumerProcess::class,
-    Hyperf\Crontab\Process\CrontabDispatcherProcess::class,
-];
+namespace App\Crontab;
+
+use Hyperf\Crontab\Annotation\Crontab;
+
+/**
+ * @Crontab(name="Foo", rule="* * * * * *", callback="execute")
+ */
+class FooCrontab
+{
+    public function execute()
+    {
+        var_dump(1);
+    }
+}
