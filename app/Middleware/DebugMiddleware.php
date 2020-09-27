@@ -34,7 +34,7 @@ class DebugMiddleware implements MiddlewareInterface
     {
         /** @var Dispatched $dispatched */
         $dispatched = $request->getAttribute(Dispatched::class);
-        if ($dispatched->handler->route == 'route') {
+        if ($route = $dispatched->handler->route ?? null and $route == 'route') {
             dump($request->getAttribute(Dispatched::class));
         }
         return $handler->handle($request);
