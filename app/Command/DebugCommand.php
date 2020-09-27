@@ -11,8 +11,10 @@ declare(strict_types=1);
  */
 namespace App\Command;
 
+use App\Rpc\JsonRpc\TestService;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
+use Hyperf\Di\Annotation\Inject;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -24,6 +26,12 @@ class DebugCommand extends HyperfCommand
      * @var ContainerInterface
      */
     protected $container;
+
+    /**
+     * @Inject
+     * @var TestService
+     */
+    protected $test;
 
     protected $signature = 'test:test {id : user_id} {--name= : user_name}';
 

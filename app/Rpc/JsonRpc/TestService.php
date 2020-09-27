@@ -11,8 +11,16 @@ declare(strict_types=1);
  */
 namespace App\Rpc\JsonRpc;
 
+use Hyperf\Di\Annotation\Inject;
+
 class TestService
 {
+    /**
+     * @Inject
+     * @var IdGenerateInterface
+     */
+    protected $idGenerator;
+
     public function methods()
     {
         return [
