@@ -37,6 +37,7 @@ class ModelController extends Controller
     public function many()
     {
         $user = di()->get(UserDao::class)->first(1);
+        var_dump($user->user_name);
 
         return $this->response->success([
             'user' => $user->toArray(),

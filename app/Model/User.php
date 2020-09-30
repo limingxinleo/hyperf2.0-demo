@@ -19,6 +19,7 @@ namespace App\Model;
  * @property \Carbon\Carbon $updated_at
  * @property \App\Model\Book[]|\Hyperf\Database\Model\Collection $books
  * @property \App\Model\UserExt $ext
+ * @property string $user_name
  * @property \App\Model\Image $image
  */
 class User extends Model
@@ -57,5 +58,16 @@ class User extends Model
     public function ext()
     {
         return $this->hasOne(UserExt::class, 'id', 'id');
+    }
+
+    public function setUserNameAttribute(string $name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function getUserNameAttribute(): string
+    {
+        return $this->name;
     }
 }
