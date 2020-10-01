@@ -65,6 +65,13 @@ LUA;
         return $this->response->success();
     }
 
+    public function incr()
+    {
+        return $this->response->success(
+            di()->get(Redis::class)->incr('test:incr')
+        );
+    }
+
     public function multi()
     {
         $channel = new Channel(1);

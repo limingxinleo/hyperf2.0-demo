@@ -37,4 +37,11 @@ class RedisTest extends HttpTestCase
 
         $this->assertSame(0, $res['code']);
     }
+
+    public function testRedisIncr()
+    {
+        $redis = di()->get(Redis::class);
+        $redis->set('test:incr', 0);
+        $this->assertEquals(1, $redis->incr('test:incr'));
+    }
 }
