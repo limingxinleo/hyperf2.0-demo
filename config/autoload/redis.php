@@ -41,6 +41,7 @@ return [
         'auth' => env('REDIS_AUTH', null),
         'port' => (int) env('REDIS_PORT', 6379),
         'db' => (int) env('REDIS_DB', 0),
+        'timeout' => 1.0,
         'pool' => [
             'min_connections' => 1,
             'max_connections' => 10,
@@ -50,9 +51,9 @@ return [
             'max_idle_time' => (float) env('REDIS_MAX_IDLE_TIME', 60),
         ],
         'sentinel' => [
-            'enable' => (bool) env('REDIS_SENTINEL_ENABLE', false),
-            'master_name' => env('REDIS_MASTER_NAME', 'mymaster'),
-            'nodes' => explode(';', env('REDIS_SENTINEL_NODE', '')),
+            'enable' => true,
+            'master_name' => 'mymaster',
+            'nodes' => ['127.0.0.1:26379'],
             'persistent' => '',
             'read_timeout' => 0,
         ],
