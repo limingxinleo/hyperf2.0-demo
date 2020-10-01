@@ -11,7 +11,9 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use Hyperf\Pool\Exception\ConnectionException;
 use Hyperf\Redis\Redis;
+use Hyperf\Redis\RedisFactory;
 use HyperfTest\HttpTestCase;
 
 /**
@@ -43,5 +45,13 @@ class RedisTest extends HttpTestCase
         $redis = di()->get(Redis::class);
         $redis->set('test:incr', 0);
         $this->assertEquals(1, $redis->incr('test:incr'));
+    }
+
+    public function testRedisSentinel()
+    {
+        $redis = di()->get(RedisFactory::class)->get('sentinel');
+
+        $this->expectException(ConnectionException::class);
+        $redis->keys('*');
     }
 }
