@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace App\Model;
 
 use Hyperf\DbConnection\Model\Relations\MorphPivot;
-use Hyperf\DbConnection\Model\Relations\Pivot;
 
 class UserRolePivot extends MorphPivot
 {

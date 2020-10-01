@@ -63,4 +63,12 @@ class ModelTest extends HttpTestCase
         $this->assertEquals($res['data']['id'], $data['id']);
         $this->assertSame('DEFAULT', $data['HF-DATA']);
     }
+
+    public function testModelPivotSave()
+    {
+        $res = $this->get('/model/pivot');
+
+        $this->assertSame(0, $res['code']);
+        $this->assertTrue($res['data']);
+    }
 }
