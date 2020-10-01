@@ -13,8 +13,10 @@ namespace App\Controller;
 
 use App\Model\Image;
 use App\Model\User;
+use App\Model\UserRolePivot;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
+use Carbon\Carbon;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Paginator\LengthAwarePaginator;
@@ -110,6 +112,15 @@ class ModelController extends Controller
     {
         return $this->response->success(
             User::findFromCache(1)->toArray()
+        );
+    }
+
+    public function pivot()
+    {
+        $model = UserRolePivot::query()->find(1);
+        $model->created_at = Carbon::now();
+        return $this->response->success(
+            $model->save()
         );
     }
 }
