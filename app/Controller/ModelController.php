@@ -14,6 +14,7 @@ namespace App\Controller;
 use App\Model\Image;
 use App\Model\User;
 use App\Model\UserRolePivot;
+use App\Model\UserSearchable;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
 use Carbon\Carbon;
@@ -122,5 +123,11 @@ class ModelController extends Controller
         return $this->response->success(
             $model->save()
         );
+    }
+
+    public function searchable()
+    {
+        $models = UserSearchable::search('Hyperf')->get();
+        return $this->response->success($models->toArray());
     }
 }

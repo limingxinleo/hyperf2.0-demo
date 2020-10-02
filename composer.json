@@ -19,6 +19,7 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=4.5",
+        "elasticsearch/elasticsearch": "^7.9",
         "hyperf/amqp": "2.0.x-dev",
         "hyperf/async-queue": "2.0.x-dev",
         "hyperf/cache": "2.0.x-dev",
@@ -32,6 +33,7 @@
         "hyperf/db-connection": "2.0.x-dev",
         "hyperf/di": "2.0.x-dev",
         "hyperf/dispatcher": "2.0.x-dev",
+        "hyperf/elasticsearch": "^2.0",
         "hyperf/event": "2.0.x-dev",
         "hyperf/exception-handler": "2.0.x-dev",
         "hyperf/framework": "2.0.x-dev",
@@ -47,6 +49,7 @@
         "hyperf/redis": "2.0.x-dev",
         "hyperf/rpc-client": "2.0.x-dev",
         "hyperf/rpc-server": "2.0.x-dev",
+        "hyperf/scout": "*",
         "hyperf/server": "2.0.x-dev",
         "hyperf/service-governance": "2.0.x-dev",
         "hyperf/session": "2.0.x-dev",
@@ -100,6 +103,10 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "/Users/limingxin/Applications/GitHub/limingxinleo/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
