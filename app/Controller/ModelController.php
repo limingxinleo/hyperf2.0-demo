@@ -15,6 +15,7 @@ use App\Model\Image;
 use App\Model\User;
 use App\Model\UserRolePivot;
 use App\Model\UserSearchable;
+use App\Resource\UserResource;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
 use Carbon\Carbon;
@@ -78,7 +79,11 @@ class ModelController extends Controller
 
     public function resource()
     {
-        return User::query()->find(1);
+        return $this->response->success(
+            new UserResource(
+                User::query()->find(1)
+            )
+        );
     }
 
     public function pagination()

@@ -71,4 +71,13 @@ class ModelTest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertTrue($res['data']);
     }
+
+    public function testModelResource()
+    {
+        $res = $this->get('/model/resource');
+
+        $this->assertSame(0, $res['code']);
+        $this->assertSame(1, $res['data']['id']);
+        $this->assertSame('Hyperf', $res['data']['name']);
+    }
 }

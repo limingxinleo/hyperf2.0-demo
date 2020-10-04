@@ -47,6 +47,7 @@
         "hyperf/pool": "2.0.x-dev",
         "hyperf/process": "2.0.x-dev",
         "hyperf/redis": "2.0.x-dev",
+        "hyperf/resource": "2.0.x-dev",
         "hyperf/rpc-client": "2.0.x-dev",
         "hyperf/rpc-server": "2.0.x-dev",
         "hyperf/scout": "*",
@@ -103,10 +104,6 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
-        "h": {
-            "type": "path",
-            "url": "/Users/limingxin/Applications/GitHub/limingxinleo/hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
