@@ -14,6 +14,7 @@ namespace App\Controller;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\View\RenderInterface;
+use function Hyperf\ViewEngine\view;
 
 /**
  * @AutoController(prefix="view")
@@ -29,8 +30,13 @@ class ViewController extends Controller
     public function index()
     {
         $template = 'index';
-        return $this->render->render($template, [
-            'name' => $this->request->input('name', 'Hyperf'),
-        ]);
+        $name = $this->request->input('name', 'Hyperf');
+        // return (string)view($template, ['name' => $name]);
+        return $this->render->render($template, ['name' => $name,]);
+    }
+
+    public function child()
+    {
+        return (string)view('child');
     }
 }

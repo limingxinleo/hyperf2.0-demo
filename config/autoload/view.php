@@ -13,8 +13,9 @@ return [
     'engine' => \Hyperf\ViewEngine\HyperfViewEngine::class,
     'mode' => \Hyperf\View\Mode::SYNC,
     'config' => [
-        'view_path' => BASE_PATH . '/storage/views/',
-        'cache_path' => BASE_PATH . '/runtime/views/',
+        'view_path' => BASE_PATH . '/storage/view/',
+        'cache_path' => BASE_PATH . '/runtime/view/',
+        'charset' => 'UTF-8',
     ],
 
     # 自定义组件
