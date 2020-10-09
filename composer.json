@@ -59,6 +59,7 @@
         "hyperf/socketio-server": "2.0.x-dev",
         "hyperf/utils": "2.0.x-dev",
         "hyperf/validation": "2.0.x-dev",
+        "hyperf/view-engine": "2.0.x-dev",
         "hyperf/websocket-client": "2.0.x-dev",
         "hyperf/websocket-server": "2.0.x-dev"
     },
@@ -104,6 +105,10 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "/Users/limingxin/Applications/GitHub/limingxinleo/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
