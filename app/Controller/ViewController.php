@@ -32,11 +32,11 @@ class ViewController extends Controller
         $template = 'index';
         $name = $this->request->input('name', 'Hyperf');
         // return (string)view($template, ['name' => $name]);
-        return $this->render->render($template, ['name' => $name,]);
+        return $this->render->render($template, ['name' => $name]);
     }
 
     public function child()
     {
-        return (string)view('child');
+        return (string) view('child');
     }
 }

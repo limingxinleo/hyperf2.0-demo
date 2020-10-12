@@ -50,7 +50,7 @@
         "hyperf/resource": "2.0.x-dev",
         "hyperf/rpc-client": "2.0.x-dev",
         "hyperf/rpc-server": "2.0.x-dev",
-        "hyperf/scout": "*",
+        "hyperf/scout": "2.0.x-dev",
         "hyperf/server": "2.0.x-dev",
         "hyperf/service-governance": "2.0.x-dev",
         "hyperf/session": "2.0.x-dev",

@@ -53,7 +53,6 @@ class ServerController extends Controller
         try {
             $result = $this->idGenerator->exception();
         } catch (\Throwable $exception) {
-
         }
 
         return $this->response->success([
