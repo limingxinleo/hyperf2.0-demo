@@ -41,6 +41,6 @@ class BladeWithoutDoubleEncodingListener implements ListenerInterface
 
     public function process(object $event)
     {
-        Blade::withoutDoubleEncoding();
+        // Blade::withoutDoubleEncoding();
     }
 }

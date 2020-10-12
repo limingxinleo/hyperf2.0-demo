@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use App\Exception\BusinessException;
 use Hyperf\HttpMessage\Uri\Uri;
 use Hyperf\Utils\Codec\Json;
 use Hyperf\WebSocketClient\Client;
@@ -38,7 +39,9 @@ class ServerTest extends HttpTestCase
         $this->assertStringContainsString('sssHyperf', $res['data']);
 
         $res = $this->get('/server/rpcException');
-        $this->assertSame('Inner Server Error', $res['data']);
+        $this->assertSame('Inner Server Error', $res['data']['message']);
+        $this->assertSame(BusinessException::class, $res['data']['class']);
+        $this->assertSame(500, $res['data']['code']);
     }
 
     public function testWebSocket()

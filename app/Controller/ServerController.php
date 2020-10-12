@@ -53,9 +53,14 @@ class ServerController extends Controller
         try {
             $result = $this->idGenerator->exception();
         } catch (\Throwable $exception) {
+
         }
 
-        return $this->response->success($exception->getMessage());
+        return $this->response->success([
+            'class' => get_class($exception),
+            'code' => $exception->getCode(),
+            'message' => $exception->getMessage(),
+        ]);
     }
 
     public function close()

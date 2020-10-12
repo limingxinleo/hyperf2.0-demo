@@ -10,8 +10,8 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    'engine' => \Hyperf\ViewEngine\HyperfViewEngine::class,
-    'mode' => \Hyperf\View\Mode::SYNC,
+    // 'engine' => \Hyperf\ViewEngine\HyperfViewEngine::class,
+    // 'mode' => \Hyperf\View\Mode::SYNC,
     'config' => [
         'view_path' => BASE_PATH . '/storage/view/',
         'cache_path' => BASE_PATH . '/runtime/view/',
