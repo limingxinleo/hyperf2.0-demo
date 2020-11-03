@@ -24,7 +24,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           tools: phpize
           extensions: redis
-          ini-values: extension=swoole, opcache.enable_cli=1
+          ini-values: extension=swoole, opcache.enable_cli=1, swoole.use_shortname="Off"
           coverage: none
       - name: Setup Swoole
         run: |
