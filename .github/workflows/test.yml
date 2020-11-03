@@ -7,12 +7,13 @@ env:
 
 jobs:
   ci:
-    name: Test on PHP ${{ matrix.php-version }}
+    name: Test on PHP${{ matrix.php-version }} Mysql${{ matrix.mysql-version }}
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
         os: [ubuntu-latest]
         php-version: ['7.2', '7.3', '7.4']
+        mysql-version: ['5.7', '8.0']
       max-parallel: 3
     steps:
       - name: Checkout
