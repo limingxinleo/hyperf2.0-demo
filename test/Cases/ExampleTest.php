@@ -54,4 +54,15 @@ class ExampleTest extends HttpTestCase
         $client->get('/?user=Agnes');
         $this->assertSame('Agnes', Json::decode($client->getBody())['data']['user']);
     }
+
+    public function testHandlerContext()
+    {
+        $res = $this->get('/index/data.html');
+        $this->assertSame('index.data', $res['data']['name']);
+        $this->assertSame('Hyperf', $res['append']);
+
+        $res = $this->get('/index/data');
+        $this->assertSame('index.data', $res['data']['name']);
+        $this->assertSame('Hyperf', $res['append']);
+    }
 }

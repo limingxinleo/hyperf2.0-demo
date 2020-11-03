@@ -13,7 +13,10 @@ use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController::index');
 Router::get('/index/{id:\d+}', App\Controller\IndexController::class . '::info', ['name' => 'index.info']);
-Router::get('/index/data.html', App\Controller\IndexController::class . '::data', ['name' => 'index.data']);
+Router::get('/index/data.html', App\Controller\IndexController::class . '::data', [
+    'name' => 'index.data',
+    'middleware' => [App\Middleware\AppendDataMiddleware::class],
+]);
 
 Router::addServer('ws', function () {
     Router::get('/', App\Controller\WebSocketController::class);

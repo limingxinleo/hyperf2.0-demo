@@ -11,9 +11,12 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Middleware\AppendDataMiddleware;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Annotation\Controller as ControllerAnnotation;
 use Hyperf\HttpServer\Annotation\GetMapping;
+use Hyperf\HttpServer\Annotation\Middleware;
+use Hyperf\HttpServer\Router\Dispatched;
 use Hyperf\HttpServer\Router\Route;
 use function Hyperf\HttpServerRoute\route;
 
@@ -45,10 +48,15 @@ class IndexController extends Controller
 
     /**
      * @GetMapping(path="data", options={"name": "index.data"})
+     * @Middleware(middleware=AppendDataMiddleware::class)
      */
     public function data()
     {
-        return $this->response->success();
+        /** @var Dispatched $dispatched */
+        $dispatched = $this->request->getAttribute(Dispatched::class);
+        return $this->response->success(
+            $dispatched->handler->options
+        );
     }
 
     public function image()
