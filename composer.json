@@ -104,11 +104,5 @@
         "cs-fix": "php-cs-fixer fix $1",
         "start": "php ./bin/hyperf.php start",
         "test": "co-phpunit -c phpunit.xml --colors=always"
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://mirrors.aliyun.com/composer"
-        }
     }
 }

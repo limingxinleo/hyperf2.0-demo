@@ -5,11 +5,11 @@ sudo: required
 matrix:
   include:
     - php: 7.2
-      env: SW_VERSION="4.5.4" SCAN_CACHEABLE=(true)
+      env: SW_VERSION="4.5.6" SCAN_CACHEABLE=(true)
     - php: 7.3
-      env: SW_VERSION="4.5.4" SCAN_CACHEABLE=(true)
+      env: SW_VERSION="4.5.6" SCAN_CACHEABLE=(true)
     - php: 7.4
-      env: SW_VERSION="4.5.4" SCAN_CACHEABLE=(true)
+      env: SW_VERSION="4.5.6" SCAN_CACHEABLE=(true)
 
 services:
   - mysql
@@ -29,6 +29,8 @@ install:
   - phpenv config-add .travis/ci.ini
   - bash .travis/setup.mysql.sh
   - docker run -d --restart=always --name rabbitmq -p 4369:4369 -p 5672:5672 -p 15672:15672 -p 25672:25672 rabbitmq:management-alpine
+  - docker run -d --name dev-consul -e CONSUL_BIND_INTERFACE=eth0 -p 8500:8500 consul
+  - docker run --name nsq -p 4150:4150 -p 4151:4151 -p 4160:4160 -p 4161:4161 -p 4170:4170 -p 4171:4171 --entrypoint /bin/nsqd -d nsqio/nsq:latest
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
