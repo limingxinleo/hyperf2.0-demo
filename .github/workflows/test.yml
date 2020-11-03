@@ -50,5 +50,9 @@ jobs:
         run: composer update -o
       - name: Setup Environment
         run: cp .env.example .env
+      - name: Run Server
+        run: |
+          php bin/hyperf.php
+          php bin/hyperf.php start &
       - name: Run Test Cases
         run: composer test
