@@ -21,7 +21,7 @@ use Hyperf\HttpServer\Router\Route;
 use function Hyperf\HttpServerRoute\route;
 
 /**
- * @ControllerAnnotation(prefix="index")
+ * @ControllerAnnotation(prefix="index", options={"id": 1})
  */
 class IndexController extends Controller
 {
