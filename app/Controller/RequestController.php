@@ -12,13 +12,22 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Request\MobileRequest;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Validation\Contract\ValidatorFactoryInterface;
+use Hyperf\Validation\ValidationException;
 
 /**
  * @AutoController(prefix="/request")
  */
 class RequestController extends Controller
 {
+    /**
+     * @Inject
+     * @var ValidatorFactoryInterface
+     */
+    protected $validationFactory;
+
     public function mobile(MobileRequest $request)
     {
         return $this->response->success(
@@ -28,5 +37,20 @@ class RequestController extends Controller
 
     public function mobile2()
     {
+        $validator = $this->validationFactory->make(
+            $this->request->all(),
+            [
+                'mobile' => 'required|mobile',
+            ],
+            [
+                'mobile.mobile' => '手机号格式错误',
+            ]
+        );
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        return $this->response->success();
     }
 }

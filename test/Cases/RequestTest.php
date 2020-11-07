@@ -33,5 +33,18 @@ class RequestTest extends HttpTestCase
         ]);
 
         $this->assertSame(0, $res['code']);
+
+        $res = $this->get('/request/mobile2', [
+            'mobile' => 'abc',
+        ]);
+
+        $this->assertSame(500, $res['code']);
+        $this->assertSame('手机号格式错误', $res['message']);
+
+        $res = $this->get('/request/mobile2', [
+            'mobile' => '18678010000',
+        ]);
+
+        $this->assertSame(0, $res['code']);
     }
 }
