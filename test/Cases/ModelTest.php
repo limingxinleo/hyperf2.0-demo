@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use GuzzleHttp\Client;
+use Hyperf\Guzzle\CoroutineHandler;
 use Hyperf\Redis\Redis;
 use HyperfTest\HttpTestCase;
 
@@ -79,5 +81,17 @@ class ModelTest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertSame(1, $res['data']['id']);
         $this->assertSame('Hyperf', $res['data']['name']);
+    }
+
+    public function testModelFind404()
+    {
+        $client = new Client([
+            'handler' => new CoroutineHandler(),
+            'base_uri' => 'http://127.0.0.1:9501',
+            'timeout' => 1,
+        ]);
+
+        $res = $client->get('/model/find404');
+        $this->assertSame(404, $res->getStatusCode());
     }
 }

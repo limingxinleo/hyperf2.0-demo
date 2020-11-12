@@ -135,4 +135,9 @@ class ModelController extends Controller
         $models = UserSearchable::search('Hyperf')->get();
         return $this->response->success($models->toArray());
     }
+
+    public function find404()
+    {
+        return User::findOr404(99999);
+    }
 }
