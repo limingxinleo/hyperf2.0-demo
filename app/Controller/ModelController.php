@@ -140,4 +140,14 @@ class ModelController extends Controller
     {
         return User::findOr404(99999);
     }
+
+    public function loadCache()
+    {
+        $models = User::findManyFromCache([1, 2]);
+        $models->loadCache(['ext', 'books']);
+
+        return $this->response->success(
+            $models->toArray()
+        );
+    }
 }
