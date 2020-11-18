@@ -29,7 +29,14 @@ class UserNameExistsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:user',
+            'nickname' => 'required|unique:user,name',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'nickname.unique' => 'name 已存在',
         ];
     }
 }

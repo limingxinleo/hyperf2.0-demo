@@ -98,7 +98,7 @@ class ModelTest extends HttpTestCase
     public function testModelUnique()
     {
         $res = $this->get('/model/unique', [
-            'name' => 'Hyperf',
+            'nickname' => 'Hyperf',
         ]);
 
         $this->assertSame(500, $res['code']);
