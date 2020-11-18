@@ -94,4 +94,14 @@ class ModelTest extends HttpTestCase
         $res = $client->get('/model/find404');
         $this->assertSame(404, $res->getStatusCode());
     }
+
+    public function testModelUnique()
+    {
+        $res = $this->get('/model/unique', [
+            'name' => 'Hyperf',
+        ]);
+
+        $this->assertSame(500, $res['code']);
+        $this->assertSame('name 已存在', $res['message']);
+    }
 }

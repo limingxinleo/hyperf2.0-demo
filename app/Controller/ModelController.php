@@ -15,6 +15,7 @@ use App\Model\Image;
 use App\Model\User;
 use App\Model\UserRolePivot;
 use App\Model\UserSearchable;
+use App\Request\UserNameExistsRequest;
 use App\Resource\UserResource;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
@@ -148,6 +149,13 @@ class ModelController extends Controller
 
         return $this->response->success(
             $models->toArray()
+        );
+    }
+
+    public function unique(UserNameExistsRequest $request)
+    {
+        return $this->response->success(
+            $request->input('name')
         );
     }
 }
