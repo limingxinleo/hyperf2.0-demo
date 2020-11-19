@@ -110,7 +110,9 @@ class ServerController extends Controller
 
     public function amqp()
     {
-        for ($i = 0; $i < 100; ++$i) {
+        $num = $this->request->input('num', 100);
+        for ($i = 0; $i < $num; ++$i) {
+            sleep(1);
             di()->get(Producer::class)->produce(new DebugProducer(['id' => $i]));
         }
         return $this->response->success();
