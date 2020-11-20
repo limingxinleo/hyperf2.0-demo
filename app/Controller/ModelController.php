@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Model\Image;
 use App\Model\User;
+use App\Model\UserExtSnowflake;
 use App\Model\UserRolePivot;
 use App\Model\UserSearchable;
 use App\Request\UserNameExistsRequest;
@@ -157,5 +158,14 @@ class ModelController extends Controller
         return $this->response->success(
             $request->input('name')
         );
+    }
+
+    public function snowflake()
+    {
+        $model = new UserExtSnowflake();
+
+        $model->save();
+
+        return $this->response->success($model->toArray());
     }
 }

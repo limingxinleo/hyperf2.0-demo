@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace HyperfTest\Cases;
 
+use App\Model\UserExtSnowflake;
 use GuzzleHttp\Client;
 use Hyperf\Guzzle\CoroutineHandler;
 use Hyperf\Redis\Redis;
@@ -103,5 +104,15 @@ class ModelTest extends HttpTestCase
 
         $this->assertSame(500, $res['code']);
         $this->assertSame('name 已存在', $res['message']);
+    }
+
+    public function testModelSnowflake()
+    {
+        $res = $this->get('/model/snowflake');
+
+        $this->assertSame(0, $res['code']);
+        $id = $res['data']['id'];
+        $model = UserExtSnowflake::find($id);
+        $this->assertSame($res['data']['created_at'], $model->toArray()['created_at']);
     }
 }
