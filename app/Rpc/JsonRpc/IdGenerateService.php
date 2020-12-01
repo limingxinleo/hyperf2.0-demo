@@ -37,4 +37,9 @@ class IdGenerateService implements IdGenerateInterface
     {
         throw new BusinessException(ErrorCode::SERVER_ERROR, 'Inner Server Error');
     }
+
+    public function id2(string $id): string
+    {
+        return di()->get(IdGenerateInterface::class)->id($id);
+    }
 }

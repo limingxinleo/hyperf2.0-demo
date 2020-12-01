@@ -16,4 +16,6 @@ interface IdGenerateInterface
     public function id(string $id): string;
 
     public function exception();
+
+    public function id2(string $id): string;
 }

@@ -38,6 +38,10 @@ class ServerTest extends HttpTestCase
         $this->assertSame(0, $res['code']);
         $this->assertStringContainsString('sssHyperf', $res['data']);
 
+        $res = $this->get('/server/rpc2');
+        $this->assertSame(0, $res['code']);
+        $this->assertStringContainsString('sssHyperf', $res['data']);
+
         $res = $this->get('/server/rpcException');
         $this->assertSame('Inner Server Error', $res['data']['message']);
         $this->assertSame(BusinessException::class, $res['data']['class']);

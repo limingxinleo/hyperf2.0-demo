@@ -48,6 +48,13 @@ class ServerController extends Controller
         return $this->response->success($result);
     }
 
+    public function rpc2()
+    {
+        $result = $this->idGenerator->id2('sss');
+
+        return $this->response->success($result);
+    }
+
     public function rpcException()
     {
         try {
