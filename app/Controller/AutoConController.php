@@ -14,9 +14,8 @@ namespace App\Controller;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
- * Class AutoConController
- * @package App\Controller
- * @AutoController()
+ * Class AutoConController.
+ * @AutoController
  */
 class AutoConController extends Controller
 {
