@@ -54,7 +54,7 @@ class BusinessExceptionHandler extends ExceptionHandler
         }
 
         if ($throwable instanceof ExitException) {
-
+            return $this->response->success();
         }
 
         if ($throwable instanceof ValidationException) {
