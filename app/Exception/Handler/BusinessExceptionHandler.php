@@ -20,6 +20,7 @@ use Hyperf\HttpMessage\Exception\HttpException;
 use Hyperf\Validation\ValidationException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
+use Swoole\ExitException;
 use Throwable;
 
 class BusinessExceptionHandler extends ExceptionHandler
@@ -50,6 +51,10 @@ class BusinessExceptionHandler extends ExceptionHandler
     {
         if ($throwable instanceof HttpException) {
             return $this->response->handleException($throwable);
+        }
+
+        if ($throwable instanceof ExitException) {
+
         }
 
         if ($throwable instanceof ValidationException) {
