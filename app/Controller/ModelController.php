@@ -168,4 +168,15 @@ class ModelController extends Controller
 
         return $this->response->success($model->toArray());
     }
+
+    public function wait()
+    {
+        $user = wait(function () {
+            return User::query()->find(1);
+        });
+
+        sleep(1);
+
+        return $this->response->success($user->toArray());
+    }
 }
