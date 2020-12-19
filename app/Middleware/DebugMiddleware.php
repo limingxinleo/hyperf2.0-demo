@@ -11,7 +11,10 @@ declare(strict_types=1);
  */
 namespace App\Middleware;
 
+use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Router\Dispatched;
+use Hyperf\Utils\Arr;
+use Hyperf\Utils\Context;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,9 +37,21 @@ class DebugMiddleware implements MiddlewareInterface
     {
         /** @var Dispatched $dispatched */
         $dispatched = $request->getAttribute(Dispatched::class);
-        if ($route = $dispatched->handler->route ?? null and $route == 'route') {
+        $route = $dispatched->handler->route ?? null;
+        if ($route == 'route') {
             dump($request->getAttribute(Dispatched::class));
         }
+
+        if ($route == '/request/all') {
+            di()->get(RequestInterface::class)->all();
+            $parsedData = $request->getParsedBody();
+            $request = $request->withParsedBody(Arr::merge($parsedData, [
+                'name' => 'Hyperf',
+            ]));
+
+            Context::set('http.request.parsedData', null);
+        }
+
         return $handler->handle($request);
     }
 }

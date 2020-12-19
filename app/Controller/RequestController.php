@@ -53,4 +53,12 @@ class RequestController extends Controller
 
         return $this->response->success();
     }
+
+    public function all()
+    {
+        // 如何在中间件中，修改 Request 的入参
+        return $this->response->success(
+            $this->request->all()
+        );
+    }
 }

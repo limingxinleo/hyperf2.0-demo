@@ -47,4 +47,11 @@ class RequestTest extends HttpTestCase
 
         $this->assertSame(0, $res['code']);
     }
+
+    public function testMiddlewareAddedToParsedData()
+    {
+        $res = $this->get('/request/all', ['id' => 1]);
+        $this->assertSame(0, $res['code']);
+        $this->assertSame(['name' => 'Hyperf', 'id' => '1'], $res['data']);
+    }
 }
