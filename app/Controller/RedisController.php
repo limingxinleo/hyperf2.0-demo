@@ -93,4 +93,10 @@ LUA;
 
         return $this->response->success();
     }
+
+    public function queue()
+    {
+        di()->get(QueueService::class)->first();
+        return $this->response->success();
+    }
 }

@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Service;
 
+use Carbon\Carbon;
 use Hyperf\AsyncQueue\Annotation\AsyncQueueMessage;
 
 class QueueService
@@ -22,5 +23,25 @@ class QueueService
     {
         sleep($time);
         var_dump('asdf' . $time);
+    }
+
+    /**
+     * @AsyncQueueMessage
+     */
+    public function first()
+    {
+        dump('first-begin: ' . Carbon::now()->toDateTimeString());
+        $this->second();
+        dump('first-end: ' . Carbon::now()->toDateTimeString());
+    }
+
+    /**
+     * @AsyncQueueMessage
+     */
+    public function second()
+    {
+        dump('second-begin: ' . Carbon::now()->toDateTimeString());
+        sleep(2);
+        dump('second-end: ' . Carbon::now()->toDateTimeString());
     }
 }
