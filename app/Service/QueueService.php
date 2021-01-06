@@ -44,4 +44,13 @@ class QueueService
         sleep(2);
         dump('second-end: ' . Carbon::now()->toDateTimeString());
     }
+
+    /**
+     * @AsyncQueueMessage
+     * @param mixed $user
+     */
+    public function model($user)
+    {
+        dump($user);
+    }
 }

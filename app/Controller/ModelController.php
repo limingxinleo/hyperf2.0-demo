@@ -20,6 +20,7 @@ use App\Request\UserNameExistsRequest;
 use App\Resource\UserResource;
 use App\Service\Dao\BookDao;
 use App\Service\Dao\UserDao;
+use App\Service\QueueService;
 use Carbon\Carbon;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -178,5 +179,14 @@ class ModelController extends Controller
         sleep(1);
 
         return $this->response->success($user->toArray());
+    }
+
+    public function queue()
+    {
+        di()->get(QueueService::class)->model(
+            User::query()->find(1)
+        );
+
+        return $this->response->success();
     }
 }
