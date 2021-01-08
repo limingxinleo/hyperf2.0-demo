@@ -22,6 +22,7 @@ class CacheController extends Controller
 {
     public function index()
     {
+        var_dump(memory_get_usage());
         return $this->response->success(
             di()->get(CacheService::class)->uuid(1)
         );

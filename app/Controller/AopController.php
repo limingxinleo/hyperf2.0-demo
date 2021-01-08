@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Service\Aop\Aop2Service;
 use App\Service\Aop\AopService;
+use App\Service\Aop\MemoryService;
 use App\Service\Circle\CircleA;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -36,6 +37,13 @@ class AopController extends Controller
         $result[] = $this->aop->getParentString('');
         $result[] = $this->aop->getTraitString('');
         return $this->response->success($result);
+    }
+
+    public function memory()
+    {
+        return $this->response->success(
+            di()->get(MemoryService::class)->test()
+        );
     }
 
     public function aop()
