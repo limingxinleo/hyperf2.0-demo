@@ -24,6 +24,6 @@ class CacheTest extends HttpTestCase
     {
         $res = $this->get('/cache/index');
         $this->assertSame(0, $res['code']);
-        $this->assertSame($res['data'], di()->get(CacheService::class)->uuid(1));
+        $this->assertSame($res['data']['uuid'], di()->get(CacheService::class)->uuid(1));
     }
 }
