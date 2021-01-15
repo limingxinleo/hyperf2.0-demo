@@ -33,7 +33,7 @@ return [
             'port' => 9502,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
-                SwooleEvent::ON_RECEIVE => [Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
+                Event::ON_RECEIVE => [Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
             ],
             'settings' => [
                 'open_length_check' => true,
@@ -50,9 +50,9 @@ return [
             'port' => 9503,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
-                SwooleEvent::ON_HAND_SHAKE => [Hyperf\WebSocketServer\Server::class, 'onHandShake'],
-                SwooleEvent::ON_MESSAGE => [Hyperf\WebSocketServer\Server::class, 'onMessage'],
-                SwooleEvent::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
+                Event::ON_HAND_SHAKE => [Hyperf\WebSocketServer\Server::class, 'onHandShake'],
+                Event::ON_MESSAGE => [Hyperf\WebSocketServer\Server::class, 'onMessage'],
+                Event::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
             ],
         ],
         [
@@ -62,7 +62,7 @@ return [
             'port' => 9504,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
-                SwooleEvent::ON_RECEIVE => [App\Controller\TcpServer::class, 'onReceive'],
+                Event::ON_RECEIVE => [App\Controller\TcpServer::class, 'onReceive'],
             ],
         ],
         [
@@ -72,7 +72,7 @@ return [
             'port' => 9505,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
-                SwooleEvent::ON_REQUEST => [App\Kernel\Http\Server::class, 'onRequest'],
+                Event::ON_REQUEST => [App\Kernel\Http\Server::class, 'onRequest'],
             ],
         ],
         [
@@ -82,9 +82,9 @@ return [
             'port' => 9506,
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
-                SwooleEvent::ON_HAND_SHAKE => ['SocketIOServer', 'onHandShake'],
-                SwooleEvent::ON_MESSAGE => ['SocketIOServer', 'onMessage'],
-                SwooleEvent::ON_CLOSE => ['SocketIOServer', 'onClose'],
+                Event::ON_HAND_SHAKE => ['SocketIOServer', 'onHandShake'],
+                Event::ON_MESSAGE => ['SocketIOServer', 'onMessage'],
+                Event::ON_CLOSE => ['SocketIOServer', 'onClose'],
             ],
         ],
     ],

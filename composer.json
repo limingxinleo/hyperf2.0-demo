@@ -20,7 +20,6 @@
         "ext-redis": "*",
         "ext-swoole": ">=4.5",
         "elasticsearch/elasticsearch": "^7.9",
-        "gemini/waiter": "^2.0",
         "hyperf/amqp": "2.1.x-dev",
         "hyperf/async-queue": "2.1.x-dev",
         "hyperf/cache": "2.1.x-dev",

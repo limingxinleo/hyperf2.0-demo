@@ -17,7 +17,7 @@ use Swoole\Http\Response as SwooleResponse;
 
 class Server extends \Hyperf\HttpServer\Server
 {
-    protected function initRequestAndResponse(SwooleRequest $request, SwooleResponse $response): array
+    protected function initRequestAndResponse($request, $response): array
     {
         Context::set(SwooleRequest::class, $request);
         Context::set(SwooleResponse::class, $response);

@@ -12,7 +12,7 @@ declare(strict_types=1);
 return [
     'handlers' => [
         Hyperf\Signal\Handler\WorkerStopHandler::class => PHP_INT_MIN,
-        Hyperf\AsyncQueue\Signal\DriverStopHandler::class,
+        Hyperf\Process\Handler\ProcessStopHandler::class,
     ],
     'timeout' => 5.0,
 ];
