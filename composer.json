@@ -30,6 +30,7 @@
         "hyperf/contract": "2.1.x-dev",
         "hyperf/crontab": "2.1.x-dev",
         "hyperf/database": "2.1.x-dev",
+        "hyperf/db": "2.1.*",
         "hyperf/db-connection": "2.1.x-dev",
         "hyperf/di": "2.1.x-dev",
         "hyperf/dispatcher": "2.1.x-dev",
