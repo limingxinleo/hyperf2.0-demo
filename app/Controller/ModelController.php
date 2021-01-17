@@ -189,4 +189,12 @@ class ModelController extends Controller
 
         return $this->response->success();
     }
+
+    public function insertSqlGetId()
+    {
+        Db::insert('INSERT INTO `user`(`name`, `gender`) VALUES(?,?)', [uniqid(), 1]);
+        $id = Db::selectOne('SELECT LAST_INSERT_ID();');
+
+        return $this->response->success($id);
+    }
 }

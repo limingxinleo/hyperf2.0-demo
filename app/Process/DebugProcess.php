@@ -11,10 +11,10 @@ declare(strict_types=1);
  */
 namespace App\Process;
 
-use Hyperf\AsyncQueue\Driver\Driver;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Process\AbstractProcess;
 use Hyperf\Process\Annotation\Process;
+use Hyperf\Process\ProcessManager;
 
 /**
  * @Process(name="DebugProcess")
@@ -23,7 +23,7 @@ class DebugProcess extends AbstractProcess
 {
     public function handle(): void
     {
-        while (Driver::$running) {
+        while (ProcessManager::isRunning()) {
             sleep(5);
             // var_dump(di()->get(ConfigInterface::class)->get('test'));
         }
